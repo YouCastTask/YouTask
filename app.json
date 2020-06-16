@@ -1,0 +1,15 @@
+{
+  "name": "YouCast",
+  "displayName": "YouCast",
+  "baseUrl": "http://youcast.media/api/",
+  "timeout": 60000,
+  "Colors": {
+    "orange": "#f48825",
+    "dark": "#0e1518",
+    "gray": "#1d2c33",
+    "red": "#ed1a16",
+    "grade1": "#feab36",
+    "grade2": "#d67013",
+    "white": "#fff"
+  }
+}

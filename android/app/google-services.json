@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "919037013922",
+    "firebase_url": "https://youcast-8a38f.firebaseio.com",
+    "project_id": "youcast-8a38f",
+    "storage_bucket": "youcast-8a38f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919037013922:android:6a698d9562bab1114c4cfb",
+        "android_client_info": {
+          "package_name": "com.ae.youcast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "919037013922-j5tui4q2cufsbq6i4sv4d8khsgte29e6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ae.youcast",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "919037013922-innj8nr8smftu2jdnhtccrqb4uk6riqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaFU9MLajjK-PGycpb9sHlwJmhp2yok9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919037013922-innj8nr8smftu2jdnhtccrqb4uk6riqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

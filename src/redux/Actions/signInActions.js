@@ -5,7 +5,7 @@ import {
     SIGN_IN_UPDATE_NAME,
     SIGN_IN_UPDATE_PASSWORD,
     SIGN_UP_STOP_LOADING
-} from './../types';
+} from '../types';
 import { login, getUser } from './../../lib/models/signinModel';
 import { StackActions, NavigationActions } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';

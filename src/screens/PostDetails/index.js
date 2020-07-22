@@ -148,6 +148,7 @@ class PostDetails extends Component {
                     <View style={captionView}>
                         {editable ? <Text style={upperCaption}>{`Say something about this ${type.toLowerCase()}`}</Text> : null}
                         <TextInput
+                            placeholder="Type Something"
                             style={editable ? inputEditable : input}
                             value={editable ? data.caption : caption}
                             multiline

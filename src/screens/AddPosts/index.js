@@ -111,7 +111,7 @@ class AddPosts extends Component {
                             <View style={input}>
                                 <TextInput
                                     style={captionInput}
-                                    placeholder={"Please paste yout youtube video url here..."}
+                                    placeholder={"Please paste your youtube video url here..."}
                                     placeholderTextColor="#fff5"
                                     selectionColor={Colors.orange}
                                     value={video}
@@ -142,7 +142,7 @@ class AddPosts extends Component {
                             <TextInput
                                 multiline
                                 style={captionInput}
-                                placeholder={navigation.state.params.type == 'video' ? "Write caption here..." : "..."}
+                                placeholder={navigation.state.params.type == 'video' ? "Write caption here..." : "Type Something"}
                                 placeholderTextColor="#fff5"
                                 maxLength={navigation.state.params.type == 'video' ? 50 : 120}
                                 selectionColor={Colors.orange}

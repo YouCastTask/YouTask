@@ -114,7 +114,7 @@ class Profile extends Component {
                     <Text style={whiteText}>Your profile is currently <Text style={orangeText}>{'locked'}</Text></Text>
                     <Text style={whiteText}>{'Your profile is what directors first see when they search for talents.\n'}</Text>
                     <Text style={whiteText}>{'It containt all your data, photo sessions and casting videos.\n'}</Text>
-                    <Text style={whiteText}>{'You need to select one of our plans and wait for your casting audition to'}<Text style={orangeText}>activate</Text> {'your profile.\n'}</Text>
+                    <Text style={whiteText}>{'You need to select one of our plans and wait for your casting audition to '}<Text style={orangeText}>activate</Text> {' your profile.\n'}</Text>
                     <Text style={whiteText}>{'Meanwhile you can enjoy our app update your portfolio and vote on other users posts.'}</Text>
                     <Button
                         text="View Plans"

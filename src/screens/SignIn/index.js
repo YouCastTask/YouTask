@@ -58,6 +58,7 @@ class SignIn extends Component {
                         baseColor={Colors.white}
                         containerStyle={input}
                         tintColor={Colors.orange}
+
                         value={password}
                         onChangeText={updatePassword.bind(this)}
                         secureTextEntry
@@ -66,7 +67,6 @@ class SignIn extends Component {
                         labelTextStyle={labelPadding}
                         renderAccessory={() => <Icon name="lock-outline" style={inputIcon} />}
                     />
-
                     <Text style={forgetPasswordBtn} onPress={() => navigation.navigate('ForgetPassword')}>Forgot your password?</Text>
 
                     <Button

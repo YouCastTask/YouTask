@@ -40,7 +40,7 @@ class ContactUs extends Component {
                         onPress: () => navigation.goBack()
                     }}
                     center={{
-                        title: "ContactUs",
+                        title: "Contact Us",
                         fontFamily: "OpenSans-Bold",
                         color: Colors.white,
                         size: RScaler(3)

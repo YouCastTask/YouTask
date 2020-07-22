@@ -100,7 +100,7 @@ const postPost = (token, caption, data, navigation) => {
             }, {
                 success: () => {
                     dispatch(fetchImages(navigation));
-                    alert("Your Photo Was Posted Successfully");
+                    alert("Your Photo Is Posted Successfully");
                 },
                 error: (error) => {
                     alert(error.response.data.message);

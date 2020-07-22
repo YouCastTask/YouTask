@@ -40,8 +40,7 @@ export const signIn = (email, password, navigation, fromRegisteration) => {
     return (dispatch) => {
         email = String(email).trim().toLowerCase();
         password = String(password).trim();
-        dispatch({ type: SIGN_IN_LOADING });
-
+        dispatch({ type: SIGN_IN_LOADING }); 
         login({
             username: email,
             password: password

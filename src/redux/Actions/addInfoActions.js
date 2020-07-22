@@ -108,7 +108,7 @@ export const deleteInfo = (index, arr, type) => {
                 }
             }
         }, {
-            text: "no"
+            text: "Cancel"
         }])
 
     }

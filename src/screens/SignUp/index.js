@@ -75,6 +75,7 @@ class SignUp extends Component {
                                 returnKeyType="next"
                                 keyboardType="email-address"
                                 iconPosition="left"
+                                autoCorrectType="off"
                                 ref={ref => this.email = ref}
                                 onSubmitEditing={() => this.password.focus()}
                                 textColor={Colors.white}

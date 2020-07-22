@@ -62,7 +62,8 @@ class ForgetPassword extends Component {
                         titleTextStyle={errorText}
                         error={emailError}
                         errorColor={Colors.red}
-                        onChangeText={updateEmail.bind(this)}
+                        autoCompleteType="off"
+                        onEndEditing={updateEmail.bind(this)}
                         renderAccessory={() => emailError ? <Icon name="alert-circle-outline" style={inputIcon} /> : null}
                     />
 

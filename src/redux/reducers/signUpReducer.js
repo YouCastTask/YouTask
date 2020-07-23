@@ -24,6 +24,7 @@ const initState = {
     email: '',
     emailError: '',
     password: '',
+    passwordError:'',
     phone: '',
     phoneError: '',
     month: '',
@@ -54,7 +55,7 @@ export default (state = initState, action) => {
             return { ...state, fullname: action.name };
 
         case SIGN_UP_UPDATE_PASSWORD:
-            return { ...state, password: action.password };
+            return { ...state, password: action.password ,passwordError: action.error};
 
         case SIGN_UP_UPDATE_PHONE:
             return { ...state, phone: action.phone, phoneError: action.error };

@@ -8,7 +8,7 @@ const getTokens = async () => {
         refresh_token: refresh_token
     }, {
         success: async (response) => {
-            const { token, refresh_token } = response;
+            const {  refresh_token,token } = response;
             await AsyncStorage.setItem('tokens', JSON.stringify({ token: token, refresh_token: refresh_token }));
         },
         error: (error) => {

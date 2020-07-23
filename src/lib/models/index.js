@@ -27,15 +27,14 @@ export const get = (url: String, options: Object, token: String) => {
             }
         })
         .catch(error => {
-            if (options.error) {
-                options.error(error);
-            }
             if (
                 error.response.data.message === "Expired JWT Token"
                 ||
                 error.response.data.message === "JWT Token not found"
             ) {
                 getTokens()
+            } else if (options.error) {
+                options.error(error);
             }
         });
 }
@@ -69,11 +68,10 @@ export const remove = (url: String, options: Object, token: String) => {
             }
         })
         .catch(error => {
-            if (options.error) {
-                options.error(error);
-            }
             if (error.response.data.message === "Expired JWT Token") {
                 getTokens()
+            } else if (options.error) {
+                options.error(error);
             }
         });
 }
@@ -108,11 +106,10 @@ export const put = (url: String, params: Object, options: Object, token: String)
             }
         })
         .catch(error => {
-            if (options.error) {
-                options.error(error);
-            }
             if (error.response.data.message === "Expired JWT Token") {
                 getTokens()
+            } else if (options.error) {
+                options.error(error);
             }
         });
 }
@@ -120,9 +117,9 @@ export const put = (url: String, params: Object, options: Object, token: String)
 export const post = (url: String, params: Object, options: Object, token: String) => {
     let requestURL = `${baseUrl}${url}`;
     let CancelToken = axios.CancelToken;
-    
+
     axios.post(requestURL, params, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        headers: token &&  url !== 'token/refresh'  ? { Authorization: `Bearer ${token}` } : {},
         onDownloadProgress: (progress) => {
             if (options.onDownloadProgress) {
                 options.onDownloadProgress(progress);
@@ -146,11 +143,10 @@ export const post = (url: String, params: Object, options: Object, token: String
             }
         })
         .catch(error => {
-            if (options.error) {
-                options.error(error);
-            }
             if (error.response.data.message === "Expired JWT Token") {
                 getTokens()
+            }else if (options.error) {
+                options.error(error);
             }
         });
 }

@@ -8,5 +8,5 @@ export const login = (params, options) => {
 }
 
 export const getUser = (token, options) => {
-    get(`users/user-data`,  token,options);
+    get(`users/user-data`, options,token);
 }

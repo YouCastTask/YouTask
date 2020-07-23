@@ -3,7 +3,7 @@ import { baseUrl, timeout } from './../../../app.json';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const getTokens = async () => {
-    const {  token,refresh_token } = JSON.parse(await AsyncStorage.getItem('tokens'));
+    const {  refresh_token,token } = JSON.parse(await AsyncStorage.getItem('tokens'));
     post(`token/refresh`, {
         refresh_token: refresh_token
     }, {

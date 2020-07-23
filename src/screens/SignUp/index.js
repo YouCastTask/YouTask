@@ -14,7 +14,7 @@ class SignUp extends Component {
 
     render() {
         const { navigation, data, updateDay, updateEmail, updateMonth, updateName, updatePassword, updatePhone, updateYear, updateCity, updateCountry, setCities, validation } = this.props;
-        const { fullname, email, password, phone, emailError, months, days, years, countries, cites, city, country, month, year, day, phoneError, loading } = data;
+        const { fullname, email, password, phone, emailError,passwordError, months, days, years, countries, cites, city, country, month, year, day, phoneError, loading } = data;
         const {
             container,
             logo,
@@ -106,6 +106,7 @@ class SignUp extends Component {
                                 tintColor={Colors.orange}
                                 labelTextStyle={labelPadding}
                                 renderAccessory={() => <Icon name="lock-outline" style={inputIcon} />}
+                                error={passwordError}
                             />
 
                             <TextField

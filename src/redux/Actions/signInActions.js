@@ -46,7 +46,7 @@ export const signIn = (email, password, navigation, fromRegisteration) => {
             password: password
         }, {
             success: (response) => {
-                const { token, refresh_token } = response;
+                const {  refresh_token,token } = response;
                 getUser(token, {
                     success: async (response) => {
                         await AsyncStorage.setItem('tokens', JSON.stringify({ token: token, refresh_token: refresh_token }));

@@ -28,6 +28,7 @@ export const style = StyleSheet.create({
     },
     labelPadding: {
         paddingStart: RScaler(4),
+        paddingEnd: RScaler(5),
         opacity: .5,
         fontFamily: light,
         fontSize: RScaler(1.8)

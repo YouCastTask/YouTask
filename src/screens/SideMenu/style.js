@@ -11,7 +11,7 @@ const bold = "OpenSans-Bold";
 
 export const style = StyleSheet.create({
     container: {
-        width: width,
+        width: '100%',
         height: height,
         backgroundColor: Colors.gray
     },

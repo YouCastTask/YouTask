@@ -12,6 +12,14 @@ import { updateDay, updateEmail, updateMonth, updateName, updatePassword, update
 
 class SignUp extends Component {
 
+    constructor() {
+        super();
+    
+        this.state = {
+          showError: true
+        }
+      }
+
     render() {
         const { navigation, data, updateDay, updateEmail, updateMonth, updateName, updatePassword, updatePhone, updateYear, updateCity, updateCountry, setCities, validation } = this.props;
         const { fullname, email, password, phone, emailError,passwordError, months, days, years, countries, cites, city, country, month, year, day, phoneError, loading } = data;
@@ -77,7 +85,11 @@ class SignUp extends Component {
                                 iconPosition="left"
                                 autoCorrectType="off"
                                 ref={ref => this.email = ref}
-                                onSubmitEditing={() => this.password.focus()}
+                                onSubmitEditing={() => {
+                                    this.setState({ showError: true });
+                                    this.password.focus()
+                                }}
+                                onFocus={() => this.setState({ showError: false })}
                                 textColor={Colors.white}
                                 baseColor={Colors.white}
                                 containerStyle={input}
@@ -87,7 +99,7 @@ class SignUp extends Component {
                                 tintColor={Colors.orange}
                                 labelTextStyle={labelPadding}
                                 renderAccessory={() => <Icon name="email-outline" style={inputIcon} />}
-                                error={emailError}
+                                error={ this.state.showError === true ?  emailError : null}
                             />
 
                             <TextField
@@ -222,7 +234,9 @@ class SignUp extends Component {
                         loading={loading}
                         indicatorColor="#fff"
                         disabled={disabled}
-                        onPress={() => validation({ fullname: fullname, email: email, password: password, phone: phone }, navigation)}
+                        onPress={() => {
+                            validation({ fullname: fullname, email: email, password: password, phone: phone }, navigation)
+                        }}
                     />
                 </ImageBackground>
             </SafeAreaView>

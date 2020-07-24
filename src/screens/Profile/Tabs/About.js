@@ -16,13 +16,25 @@ class About extends PureComponent {
                             data.map((item, index) => {
                                 const { attr, value } = item;
                                 const mod = index % 2;
-                                return (
-                                    <View key={index} style={styles.row}>
-                                        <Icon name={!mod ? "md-arrow-dropright" : "md-arrow-dropleft"} style={!mod ? styles.leftIcon : styles.rightIcon} />
-                                        <Text style={styles.title}>{String(attr).toUpperCase()}</Text>
-                                        <Text style={styles.value}>{value}</Text>
-                                    </View>
-                                );
+                                
+                                if (typeof value === 'string') {
+                                    return (
+                                        <View key={index} style={styles.row}>
+                                            <Icon name={!mod ? "md-arrow-dropright" : "md-arrow-dropleft"} style={!mod ? styles.leftIcon : styles.rightIcon} />
+                                            <Text style={styles.title}>{String(attr).toUpperCase()}</Text>
+                                            <Text style={styles.value}>{value}</Text>
+                                        </View>
+                                    );
+                                } else if (typeof value === 'object' && value !== null) {
+                                    return (
+                                        <View key={index} style={styles.row}>
+                                            <Icon name={!mod ? "md-arrow-dropright" : "md-arrow-dropleft"} style={!mod ? styles.leftIcon : styles.rightIcon} />
+                                            <Text style={styles.title}>{String(attr).toUpperCase()}</Text>
+                                            <Text style={styles.value}>{(Object.values(value))[0]}</Text>
+                                        </View>
+                                    );
+                                }
+                                
                             })
                         }
                     </View>

@@ -182,7 +182,6 @@ export const updatePassword = (password) => {
 
     if(password.length==0)
     {
-        console.log("here")
         return {
             type: SIGN_UP_UPDATE_PASSWORD,
             error: '',

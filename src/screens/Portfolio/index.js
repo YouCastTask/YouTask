@@ -78,10 +78,10 @@ class Portfolio extends Component {
                     {loading ? null : <View>
                         <TouchableOpacity
                             onPress={() => {
-                                if (me) {
+                               
                                     fetchImages(false, navigation.state.params?.id);
                                     navigation.navigate("PhotosMainPage")
-                                }
+                                
 
                             }}
                         >

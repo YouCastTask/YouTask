@@ -49,7 +49,7 @@ export const getPortfolio = (id) => {
 
             getPortfolios(id, token, {
                 success: (response) => {
-                    const { bio, cover_photo, educations, age, followers_number, is_following, talents, user, work_experiences } = response.data;
+                    const { bio, cover_photo, educations, age, followers_number, is_following, talents, user, work_experiences,trainings } = response.data;
                     const { city, location, name } = user;
 
                     dispatch({

@@ -50,7 +50,7 @@ class Profile extends Component {
             { attr: "Eye Color", value: eye_color },
             { attr: "Body Shape", value: body_shape },
             { attr: "Skin Tone", value: skin_tone },
-            { attr: "Spoken Language", value: languages.join(' - ') },
+            { attr: "Spoken Language", value: languages.map(e => e.name).join(" - ")},
             { attr: "Tattoos", value: tattoos },
             { attr: "Scars", value: scars }
         ] : [];

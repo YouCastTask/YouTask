@@ -126,3 +126,23 @@ export const updateCover = (id) => {
         })
     }
 }
+
+export const updateProfile = (id) => {
+    return async (dispatch) => {
+        dispatch({ type: POST_DETAILS_LOADING });
+
+        const { token } = JSON.parse(await AsyncStorage.getItem('tokens'));
+        setCover(id, token, {
+            success: (response) => {
+                dispatch({ type: PORTFOLIO_GET_PROFILE_PIC, profilepic: response.data.cover_photo });
+                dispatch({ type: POST_DETAILS_STOP_LOADING });
+                alert("Your Profile Photo Was Updated");
+            },
+            error: (error) => {
+                alert(error.response.data.error.message);
+                dispatch({ type: POST_DETAILS_STOP_LOADING });
+                throw (error);
+            }
+        })
+    }
+}

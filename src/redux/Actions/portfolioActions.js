@@ -15,6 +15,7 @@ import {
     PORTFOLIO_SET_USER_INFO,
     PORTFOLIO_GET_FOLLOWERS,
     PORTFOLIO_GET_COVER,
+    PORTFOLIO_GET_PROFILE_PIC,
     PORTFOLIO_GET_ID,
     PORTFOLIO_IS_IT_ME,
     ADD_POSTS_STOP_LOADING,
@@ -67,6 +68,7 @@ export const getPortfolio = (id) => {
                     dispatch({ type: PORTFOLIO_GET_TRAINING, trainings: trainings });
                     dispatch({ type: PORTFOLIO_GET_TALENTS, talents: talents });
                     dispatch({ type: PORTFOLIO_GET_COVER, url: cover_photo });
+                    dispatch({ type: PORTFOLIO_GET_PROFILE_PIC, profilepic: cover_photo });
                     dispatch({ type: PORTFOLIO_GET_ID, id: response.data.id });
                     dispatch({ type: PORTFOLIO_STOP_LOADING });
                     dispatch({ type: PORTFOLIO_IS_IT_ME, me: info.id == user.id });
@@ -101,6 +103,7 @@ export const getPortfolio = (id) => {
                     dispatch({ type: PORTFOLIO_GET_TRAINING, trainings: trainings });
                     dispatch({ type: PORTFOLIO_GET_TALENTS, talents: talents });
                     dispatch({ type: PORTFOLIO_GET_COVER, url: cover_photo });
+                    dispatch({ type: PORTFOLIO_GET_PROFILE_PIC, profilepic: cover_photo });
                     dispatch({ type: PORTFOLIO_GET_ID, id: response.data.id });
                     dispatch({ type: PORTFOLIO_STOP_LOADING });
                     dispatch({ type: PORTFOLIO_IS_IT_ME, me: response.data.user.id == id });

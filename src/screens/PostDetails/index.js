@@ -6,7 +6,7 @@ import { Toolbar, Button, ClickableView } from './../../components';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
-import { voteDown, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover } from './../../redux/Actions/postDetailsAction';
+import { voteDown, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover, updateProfile } from './../../redux/Actions/postDetailsAction';
 import { playYoutubeVideo } from '../../redux/Actions/homeActions';
 
 class PostDetails extends Component {
@@ -65,7 +65,7 @@ class PostDetails extends Component {
     }
 
     render() {
-        const { navigation, data, voteDown, voteUp, updateCaption, updateCover, info, playYoutubeVideo } = this.props;
+        const { navigation, data, voteDown, voteUp, updateCaption, updateCover, info, playYoutubeVideo, updateProfile } = this.props;
         const { item, loading, editable } = data;
         const { model, post_image, post_video, caption, points, post_time, vote_value, type, id } = item;
         const {
@@ -189,4 +189,4 @@ function MapStateToProps(state) {
     }
 }
 
-export default connect(MapStateToProps, { voteDown, playYoutubeVideo, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover })(PostDetails);
+export default connect(MapStateToProps, { voteDown, playYoutubeVideo, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover, updateProfile })(PostDetails);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, StatusBar, ScrollView, View, Image, TouchableNativeFeedback } from 'react-native';
+import { SafeAreaView, Text, StatusBar, ScrollView, View, Image, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
 import { ClickableView } from './../../components';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,6 +9,7 @@ import { DrawerActions } from 'react-navigation-drawer';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { setStaticData, setCountries } from './../../redux/Actions/signUpActions';
+import { fetchImages, getPortfolio } from './../../redux/Actions/portfolioActions';
 
 class SideMenu extends Component {
 
@@ -20,7 +21,13 @@ class SideMenu extends Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        const { getPortfolio, navigation } = this.props;
+        getPortfolio(navigation.state.params?.id);
+        this.getUserData()
+    }
+
+    async getUserData() {
         const user = await AsyncStorage.getItem('user');
 
         this.setState({
@@ -60,6 +67,7 @@ class SideMenu extends Component {
     async navigateTo(to, params: []) {
         if (to == 'logout') {
             const { navigation, setStaticData, setCountries } = this.props;
+            
             await AsyncStorage.removeItem('tokens');
             await AsyncStorage.removeItem('user', (error) => {
                 if (!error) {
@@ -75,11 +83,12 @@ class SideMenu extends Component {
         } else {
             this.props.navigation.navigate(to, params);
         }
-
     }
 
     render() {
         const { user } = this.state;
+        const { data, fetchImages, navigation } = this.props;
+        const {profileUrl, id } = data;
         const {
             container,
             sideMenuHeader,
@@ -102,7 +111,18 @@ class SideMenu extends Component {
                     style={{ position: 'absolute', left: 0 }}
                 >
                     <View style={sideMenuHeader}>
-                        <Image source={require('./../../assets/default-avatar.png')} style={avatar} />
+                        <TouchableOpacity onPress={() => {
+                            fetchImages(false, navigation.state.params?.id);
+                            navigation.navigate("PhotosMainPage")
+                       }}>
+                            <Image source={profileUrl?.image_path ?
+                                { uri: `http://youcast.media/${profileUrl.image_path}` }
+                                :
+                                require('./../../assets/default-avatar.png')}
+                                style={avatar}
+                            />
+                            {/* <Image source={require('./../../assets/default-avatar.png')} style={avatar}/> */}
+                        </TouchableOpacity>
                         <Text style={name}>{user ? user.name : "YouCast"}</Text>
                         <Text style={jobName}>{user ?.type ? user.type : ''}</Text>
                     </View>
@@ -129,4 +149,10 @@ class SideMenu extends Component {
     }
 }
 
-export default connect(null, { setStaticData, setCountries })(SideMenu);
+function MapStateToProps(state) {
+    return {
+        data: state.Portfolio
+    }
+}
+
+export default connect(MapStateToProps, { setStaticData, setCountries, fetchImages, getPortfolio })(SideMenu);

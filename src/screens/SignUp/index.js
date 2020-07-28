@@ -145,8 +145,8 @@ class SignUp extends Component {
                                 <Dropdown
                                     label={strings.Country}
                                     labelTextStyle={dropDownLabel}
-                                    value={strings.Country}
-                                    data={countries1}
+                                    value={country}
+                                    data={countries}
                                     textColor={Colors.white}
                                     baseColor={Colors.white}
                                     itemColor={Colors.dark}
@@ -162,7 +162,7 @@ class SignUp extends Component {
                                 <Dropdown
                                     label={strings.City}
                                     data={cites}
-                                    value={strings.city}
+                                    value={city}
                                     textColor={Colors.white}
                                     labelTextStyle={dropDownLabel}
                                     baseColor={Colors.white}

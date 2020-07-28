@@ -10,6 +10,7 @@ import { RScaler } from '../../lib/utilites';
 import _ from 'underscore';
 import { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, playYoutubeVideo } from './../../redux/Actions/homeActions';
 import AsyncStorage from '@react-native-community/async-storage';
+import {strings} from "./../../translations/translation"
 
 let mainCategoryTabName
 let subCategoryTabName
@@ -65,10 +66,10 @@ class Home extends Component {
                     <Image source={avatar ? { uri: `http://youcast.media/${avatar}` } : require('./../../assets/default-avatar.png')} defaultSource={require('./../../assets/default-avatar.png')} style={itemAvatar} />
                     <View style={itemUserInfo}>
                         <Text style={userName}>{name}</Text>
-                        <Text style={info}>{`Posted a ${type.toLowerCase()}    ${post_time}`}</Text>
+                        <Text style={info}>{`${strings.Posted} ${type.toLowerCase()}    ${post_time}`}</Text>
                     </View>
                     {user.id == this.id ? null : <Button
-                        text={is_following ? "Unfollow" : "Follow"}
+                        text={is_following ? strings.UnFollow : strings.Follow}
                         textStyle={followBtnText}
                         style={followBtn}
                         background={null}
@@ -95,7 +96,7 @@ class Home extends Component {
                     <ClickableView style={voteBtn} background={null} onPress={() => {
                         voteUp(id, data.posts, item.index)
                     }}>
-                        <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>Upvote</Text>
+                        <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>{strings.Upvote}</Text>
                         <Icon name="chevron-triple-up" style={[voteBtnIcon, vote_value == 1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
                     </ClickableView>
                     <Text style={itemPoints}>{`${points} points`}</Text>
@@ -103,7 +104,7 @@ class Home extends Component {
                         voteDown(id, data.posts, item.index)
                     }}>
                         <Icon name="chevron-triple-down" style={[voteBtnIcon, vote_value == -1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
-                        <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>Downvote</Text>
+                <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>{strings.Downvote}</Text>
                     </ClickableView>
                 </View>
             </View>
@@ -124,7 +125,7 @@ class Home extends Component {
         return (
             <View style={emptyContainer}>
                 <Image source={require('./../../assets/posts-icon.png')} style={emptyIcon} />
-                <Text style={emptyMsg}>{`No Posts Yet.\nNo one posted a photo or video yet`}</Text>
+                <Text style={emptyMsg}>{strings.noPost}</Text>
             </View>
         );
     }
@@ -154,7 +155,7 @@ class Home extends Component {
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
                     flexs={[2, 2.5, 1]}
-                    leftSide={<Text style={title}>Discover</Text>}
+                leftSide={<Text style={title}>{strings.Discover}</Text>}
                 />
 
                 {!loading ?

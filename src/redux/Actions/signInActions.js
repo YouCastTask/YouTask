@@ -11,18 +11,19 @@ import { StackActions, NavigationActions } from 'react-navigation';
 import AsyncStorage from '@react-native-community/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'underscore';
+import {strings} from "./../../translations/translation"
 
 const signUpMessages = [{
-    body: "Thank You For Joining YouCast",
+    body: strings.Thank_You,
     link: null
 }, {
-    body: "Like Our Page On Facebook",
+    body: strings.Subscribe_Message,
     link: 'fb://page/110735607104576'
 }, {
-    body: "Follow Us On Instagram",
+    body: strings.Like_Message,
     link: 'instagram://user?username=youcast.eg'
 }, {
-    body: "Subscribe To Youtube",
+    body: strings.Follow_Message,
     link: 'https://www.youtube.com/channel/UCinkoHoj6l2HmEUN0bhokTw?view_as=subscriber'
 }];
 

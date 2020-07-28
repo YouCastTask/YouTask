@@ -9,6 +9,7 @@ import { } from './../../../redux/Actions/portfolioActions';
 import { RScaler } from '../../../lib/utilites';
 import { setPost } from '../../../redux/Actions/postDetailsAction';
 import { playYoutubeVideo } from '../../../redux/Actions/homeActions';
+import {strings} from "./../../../translations/translation"
 
 class Videos extends Component {
 
@@ -83,7 +84,7 @@ class Videos extends Component {
                 {!me || sectionLoading ? null : <Button
                     style={addImageBtn}
                     textStyle={addImageBtnText}
-                    text="Add Video"
+                    text={strings.Add_Video}
                     background={TouchableNativeFeedback.Ripple(Colors.orange, false)}
                     onPress={() => navigation.navigate('AddPosts', { type: 'video' })}
                 />}

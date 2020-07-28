@@ -9,6 +9,7 @@ import { DrawerActions } from 'react-navigation-drawer';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { setStaticData, setCountries } from './../../redux/Actions/signUpActions';
+import {strings} from "./../../translations/translation"
 
 class SideMenu extends Component {
 
@@ -30,28 +31,28 @@ class SideMenu extends Component {
 
     list = [
         {
-            title: 'Portfolio',
+            title: strings.Portfolio,
             icon: 'file',
             action: 'Portfolio'
         },
         {
-            title: 'Hall Of Fame',
+            title: strings.Hall_Of_Fame,
             icon: require('./../../assets/logo.png'),
             action: 'HallOfFame',
             image: true
         },
         {
-            title: 'Location',
+            title: strings.Location,
             icon: 'map-marker',
             action: 'Location'
         },
         {
-            title: 'Contact Us',
+            title: strings.Contact_Us,
             icon: 'account-multiple-outline',
             action: 'ContactUs'
         },
         {
-            title: 'Logout',
+            title: strings.Logout,
             icon: 'logout',
             action: 'logout'
         }

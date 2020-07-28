@@ -7,6 +7,7 @@ import {
     HOME_SET_CATEGORIES,
     HOME_SET_MIAN_TABS
 } from './../types';
+import {strings} from "./../../translations/translation"
 
 const initState = {
     posts: [],
@@ -14,13 +15,13 @@ const initState = {
     sectionLoading: false,
     mainTabs: [],
     tabs: [{
-        title: 'Hot',
+        title: strings.Hot,
         active: true
     }, {
-        title: 'Fresh',
+        title: strings.Fresh,
         active: false
     }, {
-        title: 'Following',
+        title: strings.Following,
         active: false
     }]
 }

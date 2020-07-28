@@ -10,21 +10,21 @@ import Photos from './Tabs/Photos';
 import Videos from './Tabs/Videos';
 import Posts from './Tabs/Posts';
 import { getPortfolio, fetchImages, fetchPosts, fetchVideos, follow_unfollow, reset } from './../../redux/Actions/portfolioActions';
-
+import {strings} from "./../../translations/translation"
 class Portfolio extends Component {
     state = { width: 750, height: 500 }
     tabs = [
         {
-            title: 'Home',
+            title: strings.Home,
             View: <Home navigation={this.props.navigation} />
         }, {
-            title: 'Photos',
+            title: strings.Photos,
             View: <Photos navigation={this.props.navigation} />
         }, {
-            title: 'Videos',
+            title: strings.Videos,
             View: <Videos navigation={this.props.navigation} />
         }, {
-            title: 'Posts',
+            title: strings.Posts,
             View: <Posts navigation={this.props.navigation} />
         }]
 
@@ -61,7 +61,7 @@ class Portfolio extends Component {
                 <Toolbar
                     toolbarColor={Colors.gray}
                     center={{
-                        title: "Portfolio",
+                        title: strings.Portfolio,
                         fontFamily: "OpenSans-Bold",
                         color: Colors.white,
                         size: RScaler(3.5)
@@ -93,9 +93,9 @@ class Portfolio extends Component {
 
                             />
                         </TouchableOpacity>
-                        <Text style={[followerCount, { top: imageHeight != RScaler(40) ? imageHeight - RScaler(5) : RScaler(29) }]}>{`${followers > 1 ? followers + " Followers" : followers + " Follower"}`}</Text>
+                        <Text style={[followerCount, { top: imageHeight != RScaler(40) ? imageHeight - RScaler(5) : RScaler(29) }]}>{`${followers > 1 ? followers + strings.Follower : followers + strings.Follower}`}</Text>
                         {me ? null : <Button
-                            text={is_following ? "Unfollow" : "Follow"}
+                            text={is_following ? strings.UnFollow : strings.Follow}
                             textStyle={followBtnText}
                             style={[followBtn, is_following ? { backgroundColor: Colors.orange } : {}]}
                             background={null}

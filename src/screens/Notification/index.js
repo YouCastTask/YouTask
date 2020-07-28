@@ -7,6 +7,7 @@ import { style, flexs } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { getNotifications } from './../../redux/Actions/notificationActions';
+import { strings } from '../../translations/translation';
 
 class Notification extends Component {
 
@@ -78,7 +79,7 @@ class Notification extends Component {
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
                     flexs={flexs}
-                    leftSide={<Text style={title}>Notification</Text>}
+                leftSide={<Text style={title}>{strings.Notification}</Text>}
                     toolbarHeight={RScaler(10)}
                 />
 

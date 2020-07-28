@@ -19,7 +19,7 @@ import {
 } from '../types';
 import { sendMail, changePass, verify } from './../../lib/models/forgetPasswordModel';
 import { StackActions, NavigationActions } from 'react-navigation';
-
+import {strings} from "./../../translations/translation"
 export const updateEmail = (email) => {
     const EmailRegExp = RegExp(/^([a-zA-Z0-9._-]+@[a-z.-]+\.[a-z]{2,6})$/);
     const valid = EmailRegExp.test(email);
@@ -27,7 +27,7 @@ export const updateEmail = (email) => {
     if (!valid) {
         return {
             type: FORGET_PASSWORD_UPDATE_MAIL,
-            error: 'Invalid email format.',
+            error: strings.Email_error_message,
             email: email.trim()
         }
     } else {

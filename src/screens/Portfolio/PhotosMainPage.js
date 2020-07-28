@@ -6,6 +6,7 @@ import { style } from './style';
 import { Colors } from './../../../app.json';
 import { setPost } from './../../redux/Actions/postDetailsAction';
 import { RScaler } from '../../lib/utilites';
+import {strings} from "./../../translations/translation"
 
 class PhotosMainPage extends Component {
 
@@ -52,7 +53,7 @@ class PhotosMainPage extends Component {
                 <Toolbar
                     toolbarColor={Colors.gray}
                     center={{
-                        title: "Photos",
+                        title: strings.Photos,
                         fontFamily: "OpenSans-Bold",
                         color: Colors.white,
                         size: RScaler(3.5)
@@ -75,7 +76,7 @@ class PhotosMainPage extends Component {
                     {!me || sectionLoading ? null : <Button
                         style={addImageBtn}
                         textStyle={addImageBtnText}
-                        text="Add Photo"
+                        text={strings.Add_Photo}
                         background={TouchableNativeFeedback.Ripple(Colors.orange, false)}
                         onPress={() => navigation.navigate('AddPosts', { type: 'image' })}
                     />}

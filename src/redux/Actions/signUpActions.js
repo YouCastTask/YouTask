@@ -25,6 +25,7 @@ import { PermissionsAndroid } from 'react-native';
 import axios from 'axios';
 import { getCountries, signUp, validate } from './../../lib/models/signupModel';
 import { signIn } from './signInActions';
+import {strings} from "./../../translations/translation"
 
 export const selectImage = (images, index) => {
     return (dispatch) => {
@@ -191,7 +192,7 @@ export const updatePassword = (password) => {
     else if (!valid) {
         return {
             type: SIGN_UP_UPDATE_PASSWORD,
-            error: 'password must be 8 characters long,contain alphanumeric digits and 1 special character like @/#/&',
+            error: strings.PasswordError,
             password: trim
         }
     } else {
@@ -207,7 +208,7 @@ export const updatePassword = (password) => {
 export const updatePhone = (phone) => {
     const trim = String(phone).trim();
     if (trim.length < 11) {
-        return { type: SIGN_UP_UPDATE_PHONE, phone: trim, error: 'Phone number can\'t be less than 11 number.' };
+        return { type: SIGN_UP_UPDATE_PHONE, phone: trim, error: strings.phoneError };
     } else {
         return { type: SIGN_UP_UPDATE_PHONE, phone: trim, error: '' };
     }
@@ -250,6 +251,7 @@ export const upload = (images, data, navigation) => {
                         const { month, year, day, iso, id, fullname, email, password, phone } = data;
                         const getDate = new Date(`${day < 10 ? '0' + day : day} ${month} ${year}`).toUTCString();
                         const ms = parseInt(new Date(getDate).getTime()) + 86400000;
+                        console.log(ms)
 
                         signUp({
                             email: String(email).toLowerCase(),

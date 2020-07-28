@@ -8,7 +8,7 @@ import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import _ from 'underscore';
 import { pickImage, reset, updateCaption, updateVideo, addPost, validateUrl } from './../../redux/Actions/addPostsAction';
-
+import {strings} from "./../../translations/translation"
 class AddPosts extends Component {
 
     componentWillUnmount() {

@@ -7,7 +7,7 @@ import { Button } from './../../components';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { requestPassword, updateEmail, reset } from './../../redux/Actions/forgetPasswordActions';
-
+import {strings} from './../../translations/translation'
 class ForgetPassword extends Component {
 
     componentWillUnmount() {
@@ -47,10 +47,10 @@ class ForgetPassword extends Component {
                         onPress={() => navigation.goBack()}
                     />
 
-                    <Text style={caption}>{`Forgot password?\nDon't worry.`}</Text>
+                    <Text style={caption}>{strings.Forgot_Message_Header}</Text>
 
                     <TextField
-                        label="Email"
+                        label={strings.Email}
                         textColor={Colors.white}
                         baseColor={Colors.white}
                         containerStyle={input}
@@ -63,12 +63,12 @@ class ForgetPassword extends Component {
                         error={emailError}
                         errorColor={Colors.red}
                         autoCompleteType="off"
-                        onEndEditing={updateEmail.bind(this)}
+                        onChangeText={updateEmail.bind(this)}
                         renderAccessory={() => emailError ? <Icon name="alert-circle-outline" style={inputIcon} /> : null}
                     />
 
                     <Button
-                        text="Reset Password"
+                        text={strings.Reset_Password}
                         textStyle={resetBtnText}
                         style={resetBtn}
                         background={null}
@@ -80,8 +80,8 @@ class ForgetPassword extends Component {
 
                     <Image source={require('./../../assets/logo-with-text.png')} style={logo} />
 
-                    <Text style={hintTitle}>HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.goBack()}>SIGN IN</Text></Text>
-                    <Text style={hintTitle}>DON'T HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>SIGN UP</Text></Text>
+        <Text style={hintTitle}>{strings.Have_Account}<Text style={hintSubTitle} onPress={() => navigation.goBack()}>{strings.SignIn}</Text></Text>
+        <Text style={hintTitle}>{strings.DontHaveAccount} <Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>{strings.SignUp}</Text></Text>
                 </ImageBackground>
             </SafeAreaView>
         );

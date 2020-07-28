@@ -6,6 +6,7 @@ import { style } from './../style';
 import { Colors } from './../../../../app.json';
 import { setPost } from './../../../redux/Actions/postDetailsAction';
 import { RScaler } from '../../../lib/utilites';
+import {strings} from "./../../../translations/translation"
 
 class Photos extends Component {
 
@@ -44,6 +45,7 @@ class Photos extends Component {
             addImageBtnText,
             list
         } = style;
+        console.log(images)
 
         return (
             <ScrollView
@@ -57,7 +59,7 @@ class Photos extends Component {
                 {!me || sectionLoading ? null : <Button
                     style={addImageBtn}
                     textStyle={addImageBtnText}
-                    text="Add Photo"
+                    text={strings.Add_Photo}
                     background={TouchableNativeFeedback.Ripple(Colors.orange, false)}
                     onPress={() => navigation.navigate('AddPosts', { type: 'image' })}
                 />}

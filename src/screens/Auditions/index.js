@@ -8,6 +8,7 @@ import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { fetchAuditions } from './../../redux/Actions/auditionActions';
 import moment from 'moment';
+import {strings} from "./../../translations/translation"
 
 class Auditions extends Component {
 
@@ -50,10 +51,10 @@ class Auditions extends Component {
         return (
             <View style={emptyContainer}>
                 <Image source={require('./../../assets/auditions-icon.png')} style={emptyIcon} />
-                <Text style={emptyMsg}>{`No Auditions Yet.\nYou don't have any Auditions History`}</Text>
+                <Text style={emptyMsg}>{strings.Auditions_Message}</Text>
 
                 <Button
-                    text="Reload"
+                    text={strings.Reload}
                     textStyle={reloadBtnText}
                     style={reloadBtn}
                     background={null}
@@ -87,7 +88,7 @@ class Auditions extends Component {
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
                     flexs={[2.2, 2, 1]}
-                    leftSide={<Text style={title}>Auditions</Text>}
+                    leftSide={<Text style={title}>{strings.Auditions}</Text>}
                     toolbarHeight={RScaler(10)}
                 />
 

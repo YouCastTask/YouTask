@@ -6,6 +6,7 @@ import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { updateInput, verifyCode, resetInputs } from './../../redux/Actions/forgetPasswordActions';
+import { strings } from '../../translations/translation';
 
 class VerifyCode extends Component {
 
@@ -45,8 +46,8 @@ class VerifyCode extends Component {
 
                     <Image source={require('./../../assets/logo-with-text.png')} style={logo} />
 
-                    <Text style={caption}>Please enter the verification code</Text>
-                    <Text style={[caption, { fontSize: RScaler(1.85), marginTop: '1%', marginBottom: '13%' }]}>We have sent the code to your email ID</Text>
+        <Text style={caption}>{strings.Verification_Code}</Text>
+        <Text style={[caption, { fontSize: RScaler(1.85), marginTop: '1%', marginBottom: '13%' }]}>{strings.Code_Sent}</Text>
 
                     <View style={inputsView}>
                         <TextInput
@@ -147,8 +148,8 @@ class VerifyCode extends Component {
                         onPress={() => verifyCode(`${_1}${_2}${_3}${_4}${_5}`, navigation)}
                     />
 
-                    <Text style={[hintTitle, { marginTop: '32%' }]}>HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.goBack()}>LOG IN!</Text></Text>
-                    <Text style={hintTitle}>DON'T HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>SIGN UP!</Text></Text>
+                        <Text style={[hintTitle, { marginTop: '32%' }]}>{strings.Have_Account}<Text style={hintSubTitle} onPress={() => navigation.goBack()}>{strings.SignIn}</Text></Text>
+                        <Text style={hintTitle}>{strings.DontHaveAccount}<Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>{strings.SignUp}</Text></Text>
                 </ImageBackground>
             </SafeAreaView>
         );

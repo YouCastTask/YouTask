@@ -7,6 +7,7 @@ import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { selectImage, upload, reset } from './../../redux/Actions/signUpActions';
+import { strings } from '../../translations/translation';
 
 class CompleteSignUp extends Component {
 
@@ -63,7 +64,7 @@ class CompleteSignUp extends Component {
                         }
                     </View>
 
-                    <Text style={caption}>{`Your Account Is Almost ready\nPlease Upload 3 Photos to continue`}</Text>
+                    <Text style={caption}>{strings.ReadyAccount}</Text>
 
                     <Button
                         text="Sign Up"

@@ -10,6 +10,7 @@ import Images from './Tabs/Images';
 import About from './Tabs/About';
 import Videos from './Tabs/Videos';
 import { getUserInfo } from './../../redux/Actions/profileActions';
+import {strings} from "./../../translations/translation"
 
 class Profile extends Component {
 
@@ -38,21 +39,21 @@ class Profile extends Component {
             subscribeBtnText
         } = style;
         const information = info ? [
-            { attr: 'Name', value: user.name },
-            { attr: 'Age', value: age },
-            { attr: "Nationality", value: nationality },
-            { attr: "Location", value: user.location ? user.location.printable_name : '' },
-            { attr: "City", value: user.city.full_city_name },
-            { attr: "Height", value: height },
-            { attr: "Weight", value: weight },
-            { attr: "Hair Color", value: hair_color },
-            { attr: "Hair Type", value: hair_type },
-            { attr: "Eye Color", value: eye_color },
-            { attr: "Body Shape", value: body_shape },
-            { attr: "Skin Tone", value: skin_tone },
-            { attr: "Spoken Language", value: languages.map(e => e.name).join(" - ")},
-            { attr: "Tattoos", value: tattoos },
-            { attr: "Scars", value: scars }
+            { attr: strings.NAME, value: user.name },
+            { attr: strings.AGE, value: age },
+            { attr: strings.NATIONALITY, value: nationality },
+            { attr: strings.LOCATION, value: user.location ? user.location.printable_name : '' },
+            { attr: strings.City, value: user.city.full_city_name },
+            { attr: strings.HEIGHT, value: height },
+            { attr: strings.WEIGHT, value: weight },
+            { attr: strings.HAIR_COLOR, value: hair_color },
+            { attr: strings.HAIR_TYPE, value: hair_type },
+            { attr: strings.EYE_COLOR, value: eye_color },
+            { attr: strings.BODY_SHAPE, value: body_shape },
+            { attr: strings.SKIN_TONE, value: skin_tone },
+            { attr: strings.SPOKEN_LANGUAGE, value: languages.map(e => e.name).join(" - ")},
+            { attr: 'TATTOOS', value: tattoos },
+            { attr: 'SCARS', value: scars }
         ] : [];
 
         return (
@@ -69,7 +70,7 @@ class Profile extends Component {
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
                     flexs={[2, 3, 1]}
-                    leftSide={<Text style={title}>Profile</Text>}
+                leftSide={<Text style={title}>{strings.Profile}</Text>}
                     toolbarHeight={RScaler(10)}
                 />
 
@@ -78,18 +79,18 @@ class Profile extends Component {
                     tabsHeight={RScaler(60)}
                     tabs={[
                         {
-                            title: 'Photos',
+                            title: strings.Photos,
                             View: <Images
                                 height={RScaler(60)}
                                 data={images} />
                         }, {
-                            title: 'General Casting',
+                            title: strings.GeneralCasting,
                             View: <Videos
                                 data={videos}
                                 navigation={navigation}
                                 height={RScaler(60)} />
                         }, {
-                            title: 'About',
+                            title: strings.About,
                             View: <About
                                 height={RScaler(60)}
                                 data={information}
@@ -104,7 +105,7 @@ class Profile extends Component {
                     </ClickableView>
 
                     <ClickableView background={TouchableNativeFeedback.Ripple(Colors.orange, false)} style={section} onPress={() => navigation.navigate('Portfolio')}>
-                        <Text style={portfolioText}>{`View\nPortfolio`}</Text>
+                        <Text style={portfolioText}>{strings.View_Portfolio}</Text>
                     </ClickableView>
                 </View> : null}
 

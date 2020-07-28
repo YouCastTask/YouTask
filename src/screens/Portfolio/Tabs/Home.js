@@ -9,6 +9,8 @@ import { Colors } from './../../../../app.json';
 import { setBio, updateBio, postBio } from './../../../redux/Actions/portfolioActions';
 import { editInfo } from '../../../redux/Actions/addInfoActions';
 import { RScaler } from '../../../lib/utilites';
+import {strings} from "./../../../translations/translation"
+
 
 class Home extends Component {
     render() {
@@ -92,7 +94,7 @@ class Home extends Component {
                             }}
                         />}
                     </View>}
-                    <Text style={sectionTitle}>About me</Text>
+                        <Text style={sectionTitle}>{strings.About_me}</Text>
                     <TextField
                         value={about}
                         multiline
@@ -118,7 +120,7 @@ class Home extends Component {
                             onPress={() => editInfo(education, 'Education', navigation)}
                         />
                     </View>}
-                    <Text style={education.length == 0 ? sectionTitleWD : sectionTitle}>Education</Text>
+                        <Text style={education.length == 0 ? sectionTitleWD : sectionTitle}>{strings.Education}</Text>
                     {
                         education.length != 0 ?
                             education.map(item => {
@@ -134,7 +136,7 @@ class Home extends Component {
                             : null
                     }
                     {education.length != 0 ? null : me ? <Button
-                        text="ADD"
+                        text= {strings.ADD}
                         textStyle={addBtnText}
                         style={addBtn}
                         background={null}
@@ -153,7 +155,7 @@ class Home extends Component {
                             onPress={() => editInfo(experience, 'Experience', navigation)}
                         />
                     </View>}
-                    <Text style={experience.length == 0 ? sectionTitleWD : sectionTitle}>Work-Experience</Text>
+                    <Text style={experience.length == 0 ? sectionTitleWD : sectionTitle}>{strings.Work_Experience}</Text>
                     {
                         experience.map(item => {
                             const { media_format, show_name, media_role, director_name, title, id, is_present, work_period } = item;
@@ -169,7 +171,7 @@ class Home extends Component {
                         })
                     }
                     {experience.length != 0 ? null : me ? <Button
-                        text="ADD"
+                        text= {strings.ADD}
                         textStyle={addBtnText}
                         style={addBtn}
                         background={null}
@@ -188,7 +190,7 @@ class Home extends Component {
                             onPress={() => editInfo(talents, 'Talent', navigation)}
                         />
                     </View>}
-                    <Text style={talents.length == 0 ? sectionTitleWD : sectionTitle}>Talents</Text>
+                    <Text style={talents.length == 0 ? sectionTitleWD : sectionTitle}>{strings.Talents}</Text>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                         {
                             talents.length != 0 ?
@@ -204,7 +206,7 @@ class Home extends Component {
                         }
                     </View>
                     {talents.length != 0 ? null : me ? <Button
-                        text="ADD"
+                        text={strings.ADD}
                         textStyle={addBtnText}
                         style={addBtn}
                         background={null}
@@ -223,7 +225,7 @@ class Home extends Component {
                             onPress={() => editInfo(trainings, 'Training', navigation)}
                         />
                     </View>}
-                    <Text style={trainings.length == 0 ? sectionTitleWD : sectionTitle}>Training</Text>
+                    <Text style={trainings.length == 0 ? sectionTitleWD : sectionTitle}>{strings.Training}</Text>
                     {
                         trainings.map(item => {
                             const { tutor, place,id } = item;
@@ -240,7 +242,7 @@ class Home extends Component {
                         })
                     }
                     {trainings.length != 0 ? null : me ? <Button
-                        text="ADD"
+                        text= {strings.ADD}
                         textStyle={addBtnText}
                         style={addBtn}
                         background={null}

@@ -8,6 +8,7 @@ import { Button } from './../../components';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
+import {strings} from './../../translations/translation'
 import { updateDay, updateEmail, updateMonth, updateName, updatePassword, updatePhone, updateYear, updateCity, updateCountry, setCities, validation } from './../../redux/Actions/signUpActions';
 
 class SignUp extends Component {
@@ -21,6 +22,8 @@ class SignUp extends Component {
       }
 
     render() {
+        let cities1=[strings.Alexandria,strings.Cario]
+        let countries1 = [strings.Egypt]
         const { navigation, data, updateDay, updateEmail, updateMonth, updateName, updatePassword, updatePhone, updateYear, updateCity, updateCountry, setCities, validation } = this.props;
         const { fullname, email, password, phone, emailError,passwordError, months, days, years, countries, cites, city, country, month, year, day, phoneError, loading } = data;
         const {
@@ -63,7 +66,7 @@ class SignUp extends Component {
                         >
 
                             <TextField
-                                label="Full Name"
+                                label={strings.FullName}
                                 returnKeyType="next"
                                 onSubmitEditing={() => this.email.focus()}
                                 textColor={Colors.white}
@@ -79,7 +82,7 @@ class SignUp extends Component {
                             />
 
                             <TextField
-                                label="Email"
+                                label={strings.Email}
                                 returnKeyType="next"
                                 keyboardType="email-address"
                                 iconPosition="left"
@@ -103,7 +106,7 @@ class SignUp extends Component {
                             />
 
                             <TextField
-                                label="Password"
+                                label={strings.Password}
                                 returnKeyType="next"
                                 iconPosition="left"
                                 ref={ref => this.password = ref}
@@ -122,7 +125,7 @@ class SignUp extends Component {
                             />
 
                             <TextField
-                                label="Phone"
+                                label={strings.Phone}
                                 keyboardType="number-pad"
                                 iconPosition="left"
                                 value={phone}
@@ -140,10 +143,10 @@ class SignUp extends Component {
 
                             <View style={dateView}>
                                 <Dropdown
-                                    label='Country'
+                                    label={strings.Country}
                                     labelTextStyle={dropDownLabel}
-                                    value={country}
-                                    data={countries}
+                                    value={strings.Country}
+                                    data={countries1}
                                     textColor={Colors.white}
                                     baseColor={Colors.white}
                                     itemColor={Colors.dark}
@@ -157,9 +160,9 @@ class SignUp extends Component {
                                     containerStyle={{ flex: 1, marginEnd: RScaler(2) }}
                                 />
                                 <Dropdown
-                                    label='City'
+                                    label={strings.City}
                                     data={cites}
-                                    value={city}
+                                    value={strings.city}
                                     textColor={Colors.white}
                                     labelTextStyle={dropDownLabel}
                                     baseColor={Colors.white}
@@ -176,7 +179,7 @@ class SignUp extends Component {
 
                             <View style={[dateView, { marginBottom: RScaler(10) }]}>
                                 <Dropdown
-                                    label='Month'
+                                    label={strings.Month}
                                     value={month}
                                     onChangeText={updateMonth.bind(this)}
                                     labelTextStyle={dropDownLabel}
@@ -191,7 +194,7 @@ class SignUp extends Component {
                                     dropdownPosition={3}
                                 />
                                 <Dropdown
-                                    label='Day'
+                                    label={strings.Day}
                                     onChangeText={updateDay.bind(this)}
                                     value={day}
                                     data={days}
@@ -206,7 +209,7 @@ class SignUp extends Component {
                                     dropdownPosition={3}
                                 />
                                 <Dropdown
-                                    label='Year'
+                                    label={strings.Year}
                                     value={year}
                                     onChangeText={updateYear.bind(this)}
                                     data={years}

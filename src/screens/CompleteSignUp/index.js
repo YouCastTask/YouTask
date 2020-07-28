@@ -11,10 +11,10 @@ import { selectImage, upload, reset } from './../../redux/Actions/signUpActions'
 class CompleteSignUp extends Component {
 
     componentWillUnmount() {
-       //this.props.reset();
+       this.props.reset();
     }
 
-    images = [1, 2, 3];
+    images = [1,2,3];
 
     render() {
         const { navigation, selectImage, data, upload } = this.props;

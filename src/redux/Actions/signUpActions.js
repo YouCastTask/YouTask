@@ -268,6 +268,7 @@ export const upload = (images, data, navigation) => {
                             },
                             error: (error) => {
                                 dispatch({ type: SIGN_UP_STOP_LOADING });
+                                console.log("i'm getting error 1")
                                 throw (error);
                             }
                         })
@@ -277,6 +278,7 @@ export const upload = (images, data, navigation) => {
                     }
                 })
                 .catch(error => {
+                    console.log("i'm getting error 2")
                     if (i >= 2) {
                         dispatch({ type: SIGN_UP_STOP_LOADING });
                     }

@@ -38,6 +38,8 @@ target 'YouCast' do
 
   pod 'XCDYouTubeKit', '~> 2.8'
 
+  pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
+
   target 'YouCastTests' do
     inherit! :search_paths
     # Pods for testing

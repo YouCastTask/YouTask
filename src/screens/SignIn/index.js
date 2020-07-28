@@ -7,6 +7,7 @@ import { Button } from './../../components';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { signIn, updateEmail, updatePassword } from './../../redux/Actions/signInActions';
+import {strings} from "./../../translations/translation"
 
 /**
  * TODO: add dropdown alerts and listeners
@@ -37,7 +38,7 @@ class SignIn extends Component {
                     <Image source={require('./../../assets/logo-with-text.png')} style={logo} />
 
                     <TextField
-                        label="Email"
+                        label={strings.Email}
                         textColor={Colors.white}
                         baseColor={Colors.white}
                         containerStyle={input}
@@ -53,7 +54,7 @@ class SignIn extends Component {
                     />
 
                     <TextField
-                        label="Password"
+                        label={strings.Password}
                         textColor={Colors.white}
                         baseColor={Colors.white}
                         containerStyle={input}
@@ -67,10 +68,10 @@ class SignIn extends Component {
                         labelTextStyle={labelPadding}
                         renderAccessory={() => <Icon name="lock-outline" style={inputIcon} />}
                     />
-                    <Text style={forgetPasswordBtn} onPress={() => navigation.navigate('ForgetPassword')}>Forgot your password?</Text>
+                    <Text style={forgetPasswordBtn} onPress={() => navigation.navigate('ForgetPassword')}>{strings.ForgotPassword}</Text>
 
                     <Button
-                        text="Sign In"
+                        text={strings.SignIn}
                         textStyle={signInBtnText}
                         style={signInBtn}
                         background={null}
@@ -80,7 +81,7 @@ class SignIn extends Component {
                         disabled={disable}
                     />
 
-                    <Text style={createAccountText}>Don't have an account yet? <Text style={createAccountBtn} onPress={() => navigation.navigate('SignUp')}>Sign Up</Text></Text>
+                    <Text style={createAccountText}>{strings.DontHaveAccount} <Text style={createAccountBtn} onPress={() => navigation.navigate('SignUp')}>{strings.SignUp}</Text></Text>
                 </ImageBackground>
             </SafeAreaView>
         );

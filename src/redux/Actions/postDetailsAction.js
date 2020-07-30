@@ -12,6 +12,7 @@ import { upVote, downVote } from './../../lib/models/homeModel';
 import AsyncStorage from '@react-native-community/async-storage';
 import { removePost, editCaption, setCover } from './../../lib/models/postDetailsModel';
 import { fetchImages, fetchVideos } from './portfolioActions';
+import { strings } from '../../translations/translation';
 
 export const setPost = (post) => {
     return { type: POST_DETAILS_SET_ITEM, item: post };
@@ -60,14 +61,14 @@ export const voteDown = (id) => {
 export const deletePost = (id, navigation, userId) => {
     return async (dispatch) => {
         const { token } = JSON.parse(await AsyncStorage.getItem('tokens'));
-        Alert.alert('Delete Post', "Are you sure?", [{
-            text: "DELETE",
+        Alert.alert(`${strings.Delete} ${strings.Post}`, strings.areYouSure, [{
+            text: strings.Delete,
             onPress: () => {
                 removePost(id, token, {
                     success: () => {
                         dispatch(fetchImages(navigation, userId, true));
                         dispatch(fetchVideos(navigation, userId, true));
-                        alert("Your Post Was Deleted Successfully");
+                        alert(strings.postDeletedSuccessfully);
                     },
                     error: (error) => {
                         alert(error.response.data.message);
@@ -76,7 +77,7 @@ export const deletePost = (id, navigation, userId) => {
                 });
             }
         }, {
-            text: "cancel"
+            text: strings.Cancel
         }]);
     }
 }
@@ -97,7 +98,7 @@ export const updatePost = (caption, item, navigation) => {
             success: () => {
                 dispatch(fetchImages(navigation, item.model.id));
                 dispatch(fetchVideos(navigation, item.model.id));
-                alert("Your Post Was Changed Successfully");
+                alert(strings.postChangedSuccessfully);
             },
             error: (error) => {
                 alert(error.response.data.message);
@@ -116,7 +117,27 @@ export const updateCover = (id) => {
             success: (response) => {
                 dispatch({ type: PORTFOLIO_GET_COVER, url: response.data.cover_photo });
                 dispatch({ type: POST_DETAILS_STOP_LOADING });
-                alert("Your Cover Photo Was Updated");
+                alert(strings.coverPhotoUpdatedSuccessfully);
+            },
+            error: (error) => {
+                alert(error.response.data.error.message);
+                dispatch({ type: POST_DETAILS_STOP_LOADING });
+                throw (error);
+            }
+        })
+    }
+}
+
+export const updateProfile = (id) => {
+    return async (dispatch) => {
+        dispatch({ type: POST_DETAILS_LOADING });
+
+        const { token } = JSON.parse(await AsyncStorage.getItem('tokens'));
+        setCover(id, token, {
+            success: (response) => {
+                dispatch({ type: PORTFOLIO_GET_PROFILE_PIC, profilepic: response.data.cover_photo });
+                dispatch({ type: POST_DETAILS_STOP_LOADING });
+                alert("Your Profile Photo Was Updated");
             },
             error: (error) => {
                 alert(error.response.data.error.message);

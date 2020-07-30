@@ -43,10 +43,10 @@ class Notification extends Component {
         return (
             <View style={emptyContainer}>
                 <Image source={require('./../../assets/notification-icon.png')} style={emptyIcon} />
-                <Text style={emptyMsg}>{`No Notification Yet.\nYou don't have any notifications`}</Text>
+                <Text style={emptyMsg}>{strings.noNotifications}</Text>
 
                 <Button
-                    text="Reload"
+                    text={strings.Reload}
                     textStyle={reloadBtnText}
                     style={reloadBtn}
                     background={null}

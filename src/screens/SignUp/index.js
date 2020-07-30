@@ -230,7 +230,7 @@ class SignUp extends Component {
                     </KeyboardAvoidingView>
 
                     <Button
-                        text="Next step"
+                        text={strings.NextStep}
                         textStyle={signUpBtnText}
                         style={signUpBtn}
                         background={null}

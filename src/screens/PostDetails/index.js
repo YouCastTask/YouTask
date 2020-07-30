@@ -6,8 +6,9 @@ import { Toolbar, Button, ClickableView } from './../../components';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
-import { voteDown, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover } from './../../redux/Actions/postDetailsAction';
+import { voteDown, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover, updateProfile } from './../../redux/Actions/postDetailsAction';
 import { playYoutubeVideo } from '../../redux/Actions/homeActions';
+import { strings } from '../../translations/translation';
 
 class PostDetails extends Component {
 
@@ -65,7 +66,7 @@ class PostDetails extends Component {
     }
 
     render() {
-        const { navigation, data, voteDown, voteUp, updateCaption, updateCover, info, playYoutubeVideo } = this.props;
+        const { navigation, data, voteDown, voteUp, updateCaption, updateCover, info, playYoutubeVideo, updateProfile } = this.props;
         const { item, loading, editable } = data;
         const { model, post_image, post_video, caption, points, post_time, vote_value, type, id } = item;
         const {
@@ -117,7 +118,7 @@ class PostDetails extends Component {
                     bounces={false}
                 >
                     {info.me && item?.post_image ? <Button
-                        text="Set As Cover Photo"
+                        text={strings.SetAsCover}
                         textStyle={setCovetBtnText}
                         style={setCovetBtn}
                         loading={loading}
@@ -130,7 +131,7 @@ class PostDetails extends Component {
                         <Image source={model?.avatar ? { uri: `http://youcast.media/${model.avatar}` } : require('./../../assets/default-avatar.png')} style={pPicture} />
                         <View style={userInfo}>
                             <Text style={name}>{model.user.name}</Text>
-                            <Text style={details}>{`Posted a ${type.toLowerCase()}    ${post_time}`}</Text>
+                            <Text style={details}>{`${strings.Posted} ${type.toLowerCase()=='image'?strings.Image.toLowerCase():strings.Video.toLowerCase()}    ${post_time}`}</Text>
                         </View>
                     </View>
 
@@ -146,7 +147,7 @@ class PostDetails extends Component {
                     </ClickableView>
 
                     <View style={captionView}>
-                        {editable ? <Text style={upperCaption}>{`Say something about this ${type.toLowerCase()}`}</Text> : null}
+                        {editable ? <Text style={upperCaption}>{`${strings.saySomething} ${type.toLowerCase()=='image'?strings.Image.toLowerCase():strings.Video.toLowerCase()}`}</Text> : null}
                         <TextInput
                             placeholder="Type Something"
                             style={editable ? inputEditable : input}
@@ -162,7 +163,7 @@ class PostDetails extends Component {
                         <ClickableView style={voteBtn} background={null} onPress={() => {
                             voteUp(id);
                         }}>
-                            <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>Upvote</Text>
+                            <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>${strings.Upvote}</Text>
                             <Icon name="chevron-triple-up" style={[voteBtnIcon, vote_value == 1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
                         </ClickableView>
                         <Text style={itemPoints}>{`${points} points`}</Text>
@@ -170,7 +171,7 @@ class PostDetails extends Component {
                             voteDown(id);
                         }}>
                             <Icon name="chevron-triple-down" style={[voteBtnIcon, vote_value == -1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
-                            <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>Downvote</Text>
+                    <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>{strings.Downvote}</Text>
                         </ClickableView>
                     </View>
                 </ScrollView>
@@ -189,4 +190,4 @@ function MapStateToProps(state) {
     }
 }
 
-export default connect(MapStateToProps, { voteDown, playYoutubeVideo, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover })(PostDetails);
+export default connect(MapStateToProps, { voteDown, playYoutubeVideo, voteUp, deletePost, editPost, updateCaption, updatePost, updateCover, updateProfile })(PostDetails);

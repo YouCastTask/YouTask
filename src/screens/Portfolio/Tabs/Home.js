@@ -82,14 +82,14 @@ class Home extends Component {
                             style={optionBtn}
                             background={TouchableNativeFeedback.Ripple(Colors.orange, true)}
                             onPress={() => {
-                                Alert.alert('Confirmation', "Are you sure you wanna delete bio?", [{
-                                    text: "YES",
+                                Alert.alert(strings.Confirmation, strings.AreYouSure, [{
+                                    text: strings.Yes,
                                     onPress: () => {
                                         setBio('');
                                         postBio(null);
                                     }
                                 }, {
-                                    text: "NO"
+                                    text: strings.No
                                 }]);
                             }}
                         />}

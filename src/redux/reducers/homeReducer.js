@@ -15,13 +15,13 @@ const initState = {
     sectionLoading: false,
     mainTabs: [],
     tabs: [{
-        title: strings.Hot,
+        title: "Hot",
         active: true
     }, {
-        title: strings.Fresh,
+        title: "Fresh",
         active: false
     }, {
-        title: strings.Following,
+        title: "Following",
         active: false
     }]
 }

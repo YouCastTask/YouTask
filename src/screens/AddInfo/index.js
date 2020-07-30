@@ -10,6 +10,7 @@ import _ from 'underscore';
 import { Dropdown } from 'react-native-material-dropdown';
 import moment from 'moment';
 import { addNewExp, addNewEducation, addNewTalent, addNewTraining, deleteInfo, setValues, updateMediaFormat, insertInfo, togglePicker } from './../../redux/Actions/addInfoActions';
+import { strings } from '../../translations/translation';
 let mediaFormats = [
     {
         value: "TV Series",
@@ -259,7 +260,7 @@ class AddInfo extends Component {
         return (
             <Button
                 style={style.saveBtn}
-                text="Save"
+                text={strings.Save}
                 textStyle={style.saveBtnText}
                 background={null}
                 loading={data.loading}
@@ -293,7 +294,7 @@ class AddInfo extends Component {
                         color: Colors.white,
                         fontFamily: "OpenSans-Regular",
                         size: RScaler(3),
-                        title: `Add ${navigation.state.params.type}`
+                        title: `${strings.Add} ${navigation.state.params.type=="Education"?strings.Education:navigation.state.params.type=="Talent"?strings.Talents:strings.Training}`
                     }}
                     rightSide={{
                         icon: "ios-add",

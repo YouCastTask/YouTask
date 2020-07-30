@@ -164,7 +164,7 @@ export const updateEmail = (email) => {
     } else if (!valid) {
         return {
             type: SIGN_UP_UPDATE_EMAIL,
-            error: 'Invalid email format.',
+            error: strings.Email_error_message,
             email: email.trim()
         }
     } else {
@@ -275,7 +275,7 @@ export const upload = (images, data, navigation) => {
                             }
                         })
                     } else if (i >= 2 && arr.length < 2) {
-                        alert('error has been occured while uploading please try again.');
+                        alert(strings.errorHasEccorred);
                         dispatch({ type: SIGN_UP_STOP_LOADING });
                     }
                 })

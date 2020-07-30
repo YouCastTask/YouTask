@@ -8,11 +8,13 @@ import {
     ADD_POSTS_SET_STATUS
 } from './../types';
 
+import {strings} from "./../../translations/translation"
+
 const initState = {
     image: {},
     caption: '',
     video: '',
-    status: 'No url found',
+    status: strings.noUrl,
     statusCode: null,
     loading: false
 }
@@ -43,7 +45,7 @@ export default (state = initState, action) => {
                 caption: '',
                 video: '',
                 loading: false,
-                status: 'No url found',
+                status: strings.noUrl,
                 statusCode: null
             };
 

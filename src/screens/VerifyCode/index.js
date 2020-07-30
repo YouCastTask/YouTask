@@ -31,6 +31,8 @@ class VerifyCode extends Component {
             inputsView
         } = style;
         const disabled = _1 == '' || _2 == '' || _3 == '' || _4 == '' || _5 == '';
+        const code = `${_1}${_2}${_3}${_4}${_5}`
+        const revCode  = `${_5}${_4}${_3}${_2}${_1}`
 
         return (
             <SafeAreaView style={container}>
@@ -138,14 +140,16 @@ class VerifyCode extends Component {
                     </View>
 
                     <Button
-                        text="DONE"
+                        text={strings.DONE}
                         textStyle={resetBtnText}
                         style={resetBtn}
                         background={null}
                         disabled={disabled}
                         loading={verifyLoading}
                         indicatorColor='#fff'
-                        onPress={() => verifyCode(`${_1}${_2}${_3}${_4}${_5}`, navigation)}
+                        onPress={() => {
+                            strings.getLanguage()=="en"?verifyCode(code, navigation):verifyCode(revCode, navigation)
+                        }}
                     />
 
                         <Text style={[hintTitle, { marginTop: '32%' }]}>{strings.Have_Account}<Text style={hintSubTitle} onPress={() => navigation.goBack()}>{strings.SignIn}</Text></Text>

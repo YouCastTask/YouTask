@@ -65,7 +65,7 @@ class AddPosts extends Component {
                         color: Colors.white,
                         fontFamily: "OpenSans-Regular",
                         size: RScaler(3),
-                        title: `Add ${navigation.state.params.type}`
+                        title: `${strings.Add} ${navigation.state.params.type=='image'?strings.Image:strings.Video}`
                     }}
                 />
 
@@ -77,7 +77,7 @@ class AddPosts extends Component {
                 >
 
                     <Button
-                        text={navigation.state.params.type == 'video' ? "Post" : "Upload"}
+                        text={navigation.state.params.type == 'video' ? strings.Post : strings.Upload}
                         textStyle={uploadBtnText}
                         style={uploadBtn}
                         background={null}
@@ -92,10 +92,10 @@ class AddPosts extends Component {
                             <View style={tipView}>
                                 <View style={tipTexts}>
                                     <Text style={orangeText}>Youtube</Text>
-                                    <Text style={whiteText}>Video URL</Text>
+                                    <Text style={whiteText}>{`${strings.Video} URL`} </Text>
                                 </View>
                                 <View style={separator} />
-                                <Text style={tipText}>You need to upload your video to youtube before posting a video</Text>
+                    <Text style={tipText}> {`${strings.YouNeedToUpload} youtube ${strings.beforePostingVideo}`}</Text>
                             </View>
                             : null
                     }
@@ -104,14 +104,14 @@ class AddPosts extends Component {
                         {image?.uri ? <Image source={{ uri: image.uri }} style={postImage} /> : <View style={plusView}>
                             <Icon name="plus" color={Colors.white} size={RScaler(6)} />
                         </View>}
-                        {image.uri ? null : <Text style={slug}>{`Please select the photo you\nwant to upload`}</Text>}
+                        {image.uri ? null : <Text style={slug}>{strings.pleaseSelectPhoto}</Text>}
                     </ClickableView>
                         :
                         <View style={videoContainer}>
                             <View style={input}>
                                 <TextInput
                                     style={captionInput}
-                                    placeholder={"Please paste your youtube video url here..."}
+                                    placeholder={`${strings.pleasePasteYour} youtube ${strings.videoUrlHere} `}
                                     placeholderTextColor="#fff5"
                                     selectionColor={Colors.orange}
                                     value={video}
@@ -125,7 +125,7 @@ class AddPosts extends Component {
                     {
                         navigation.state.params.type == 'video' ?
                             <View style={checkView}>
-                                <Text style={checkOrangeText}>Check<Text style={whiteText}> URL</Text></Text>
+                                <Text style={checkOrangeText}>{strings.Check}<Text style={whiteText}>URL</Text></Text>
                                 <View style={separator} />
                                 <View style={statusView}>
                                     <View style={[statusCircleView, statusCode != null ? { backgroundColor: statusCode ? Colors.orange : Colors.red } : null]} />
@@ -136,13 +136,13 @@ class AddPosts extends Component {
                     }
 
                     <View style={captionContainer}>
-                        <Text style={captionTitle}>{`Say something about this ${navigation.state.params.type}`}</Text>
+                        <Text style={captionTitle}>{`${strings.saySomething} ${navigation.state.params.type=="Image"?strings.Image:strings.Video}`}</Text>
 
                         <View style={input}>
                             <TextInput
                                 multiline
                                 style={captionInput}
-                                placeholder={navigation.state.params.type == 'video' ? "Write caption here..." : "Type Something"}
+                                placeholder={navigation.state.params.type == 'video' ? strings.writeCaption : strings.typeSomething}
                                 placeholderTextColor="#fff5"
                                 maxLength={navigation.state.params.type == 'video' ? 50 : 120}
                                 selectionColor={Colors.orange}

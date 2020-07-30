@@ -108,11 +108,12 @@ class Portfolio extends Component {
                             optimize
                             tabsHeight={RScaler(55)}
                             onTabChange={(tab) => {
-                                if (tab == 'Photos') {
+                            
+                                if (tab == strings.Photos) {
                                     fetchImages(false, navigation.state.params?.id);
-                                } else if (tab == 'Posts') {
+                                } else if (tab == strings.Posts) {
                                     fetchPosts(navigation.state.params?.id);
-                                } else if (tab == 'Videos') {
+                                } else if (tab == strings.Videos) {
                                     fetchVideos(false, navigation.state.params?.id);
                                 }
                             }}

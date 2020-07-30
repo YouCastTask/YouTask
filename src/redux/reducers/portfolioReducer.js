@@ -14,6 +14,7 @@ import {
     PORTFOLIO_SET_USER_INFO,
     PORTFOLIO_GET_FOLLOWERS,
     PORTFOLIO_GET_COVER,
+    PORTFOLIO_GET_PROFILE_PIC,
     PORTFOLIO_GET_ID,
     PORTFOLIO_IS_IT_ME,
     PORTFOLIO_IS_FOLLOWING,
@@ -53,7 +54,7 @@ export default (state = initState, action) => {
                 loading: true,
                 sectionLoading: false,
                 about: '',
-                coverUrl: '',
+                coverUrl: state.coverUrl,
                 education: [],
                 experience: [],
                 trainings:[],
@@ -81,6 +82,9 @@ export default (state = initState, action) => {
 
         case PORTFOLIO_GET_COVER:
             return { ...state, coverUrl: action.url };
+
+        case PORTFOLIO_GET_PROFILE_PIC:
+            return { ...state, profileUrl: action.profilepic };
 
         case PORTFOLIO_EDIT_BIO:
             return { ...state, editable: !state.editable };

@@ -7,6 +7,7 @@ import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { updatePassword, updatePasswordAgain, resetPasswords, changePassword } from './../../redux/Actions/forgetPasswordActions';
+import { strings } from '../../translations/translation';
 
 class ChangePassword extends Component {
     render() {
@@ -42,7 +43,7 @@ class ChangePassword extends Component {
 
                     <Image source={require('./../../assets/logo-with-text.png')} style={logo} />
 
-                    <Text style={caption}>Please enter a new password</Text>
+                    <Text style={caption}>{strings.PleaseEnter}</Text>
 
                     <View style={inputsView}>
                         <View style={inputContainer}>
@@ -63,7 +64,7 @@ class ChangePassword extends Component {
                             <Icon name="lock-outline" color='#ffffff99' size={RScaler(3.5)} />
                             <TextInput
                                 style={input}
-                                placeholder="Confirm Password"
+                                placeholder={strings.ConfirmPassword}
                                 placeholderTextColor='#ffffff99'
                                 selectionColor={Colors.orange}
                                 onChangeText={updatePasswordAgain.bind(this)}
@@ -75,7 +76,7 @@ class ChangePassword extends Component {
                     </View>
 
                     <Button
-                        text="Change Password"
+                        text={strings.changePassword}
                         textStyle={resetBtnText}
                         style={resetBtn}
                         background={null}
@@ -85,8 +86,8 @@ class ChangePassword extends Component {
                         onPress={() => changePassword(newPassword, newPasswordRepeat, navigation.state.params.code, navigation)}
                     />
 
-                    <Text style={[hintTitle, { marginTop: '32%' }]}>HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.goBack()}>LOG IN!</Text></Text>
-                    <Text style={hintTitle}>DON'T HAVE AN ACCOUNT? <Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>SIGN UP!</Text></Text>
+        <Text style={[hintTitle, { marginTop: '32%' }]}>{strings.Have_Account}<Text style={hintSubTitle} onPress={() => navigation.goBack()}>{strings.SignIn}</Text></Text>
+        <Text style={hintTitle}>{strings.DontHaveAccount} <Text style={hintSubTitle} onPress={() => navigation.replace('SignUp')}>{strings.SignUp}</Text></Text>
                 </ImageBackground>
             </SafeAreaView>
         );

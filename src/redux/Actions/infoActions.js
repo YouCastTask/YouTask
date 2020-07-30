@@ -11,6 +11,7 @@ import { getPackages, subscripeToPlane } from './../../lib/models/infoModel';
 import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'underscore';
 import firestore from '@react-native-firebase/firestore';
+import { strings } from '../../translations/translation';
 
 export const fetchPackages = () => {
     return async (dispatch) => {
@@ -59,15 +60,15 @@ export const subscripe = (id) => {
                 DeviceEventEmitter.emit("CloseModal");
                 // !!__Firebase workround__!!
                 firestore().collection(`_${user.id}`).doc().set({
-                    body: "You have sent a request to subscribe to one of our plans.\nplease wait a YOUCAST Representative to contact you as soon as we can.\nThank You 😀"
+                    body: strings.requestSent
                 }).then(() => {
                     global.popup.show({
                         onPress: null,
                         appIconSource: require('./../../assets/logo.png'),
                         appTitle: 'YOUCAST',
                         timeText: 'Now',
-                        title: 'Subscribe successed',
-                        body: 'You have sent a request to subscribe to one of our plans.\nplease wait a YOUCAST Representative to contact you as soon as we can.\nThank You 😀',
+                        title: strings.subscribeSucceed,
+                        body: strings.requestSent,
                         slideOutTime: 10000
                     });
                 });

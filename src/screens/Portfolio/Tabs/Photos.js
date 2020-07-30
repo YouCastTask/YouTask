@@ -45,8 +45,6 @@ class Photos extends Component {
             addImageBtnText,
             list
         } = style;
-        console.log(images)
-
         return (
             <ScrollView
                 style={scrollContainer}

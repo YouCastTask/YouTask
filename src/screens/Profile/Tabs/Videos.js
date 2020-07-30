@@ -4,6 +4,7 @@ import Video from 'react-native-video-controls';
 import { RScaler } from './../../../lib/utilites';
 import { Colors } from './../../../../app.json';
 import { ClickableView } from '../../../components';
+import { strings } from '../../../translations/translation';
 
 class Videos extends PureComponent {
 
@@ -35,10 +36,18 @@ class Videos extends PureComponent {
                     data.map((i, index) => {
                         return (
                             <ClickableView style={contetnContainer} background={null} key={index} onPress={() => navigation.navigate('VideoPlayer', { source: { uri: `http://youcast.media/data/uploads/${i.title}` } })}>
-                                <Text style={title}>General Casting Video</Text>
+                                
+                                <Text style={title}>{strings.GeneralCasting} {strings.Video}</Text>
                                 <View style={videoContainer}>
                                     {/* {uri: `http://youcast.media/data/uploads/${i.title}` } */}
-                                    <Image source={require('./../../../assets/default-cover.png')} style={image} />
+                                    <Image source={
+                                        i.video_thumbnail?
+                                        {uri: `${i.video_thumbnail}`}
+                                        :
+                                        require('./../../../assets/default-cover.png')
+                                    }
+                        
+                                        style={image} />
                                 </View>
 
                                 <View style={row}>

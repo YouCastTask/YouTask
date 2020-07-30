@@ -48,7 +48,7 @@ class Videos extends Component {
                         <Text style={captionStyle}>{caption}</Text>
                     </View>
                     <Button
-                        text="WATCH"
+                        text={strings.Watch}
                         textStyle={watchBtnText}
                         style={watchBtn}
                         background={null}

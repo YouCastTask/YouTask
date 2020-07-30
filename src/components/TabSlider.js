@@ -50,6 +50,7 @@ class TabSlider extends PureComponent<Props> {
                         const active = index == currentTab;
                         return (
                             <ClickableView key={index} style={[paginationDot, { width: width / tabs.length }]} onPress={() => {
+                                console.log(index)
                                 this.nextIndex(index)
                                 this.setState({
                                     tabed: true

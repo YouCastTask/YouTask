@@ -16,20 +16,21 @@ import _ from 'underscore';
 import { addEducation, addExp, addTalent, addTraining } from './../../lib/models/addInfoModel';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
+import { strings } from '../../translations/translation';
 
 export const addNewExp = (arr) => {
     return (dispatch) => {
         arr.push([{
-            title: "Media format",
+            title: strings.Mediaformat,
             value: ""
         }, {
-            title: "Name Of Show",
+            title: strings.NameOfShow,
             value: ""
         }, {
-            title: "Media role",
+            title: strings.MediaRole,
             value: ""
         }, {
-            title: "Name Of Director",
+            title: strings.NameOfDirector,
             value: ""
         }]);
 
@@ -41,13 +42,13 @@ export const addNewTraining = (arr) => {
     return (dispatch) => {
         arr.push([
             {
-                title: "Name Of Class",
+                title: strings.NameOfClass,
                 value: ""
             }, {
-                title: "Name Of Teacher",
+                title: strings.NameOfTeacher,
                 value: ""
             }, {
-                title: "Place You took it at",
+                title: strings.PlaceyouLook,
                 value: ""
             }
         ]);
@@ -60,7 +61,7 @@ export const addNewTalent = (arr) => {
     return (dispatch) => {
         arr.push([
             {
-                title: "Talent",
+                title: strings.Talents,
                 value: ""
             }
         ]);
@@ -73,15 +74,15 @@ export const addNewEducation = (arr) => {
     return (dispatch) => {
         arr.push([
             {
-                title: "School - University",
+                title: strings.School_university,
                 value: ""
             },
             {
-                title: "Degree",
+                title: strings.Degree,
                 value: ""
             },
             {
-                title: "Field Of Study",
+                title: strings.FieldOfStudy,
                 value: ""
             }
         ]);
@@ -93,8 +94,8 @@ export const addNewEducation = (arr) => {
 export const deleteInfo = (index, arr, type) => {
     return (dispatch) => {
 
-        Alert.alert(`Remove ${type}`, "Are you sure?", [{
-            text: "DELETE",
+        Alert.alert(`${strings.Remove} ${type=="Education"?strings.Education:type=="Talent"?strings.Talents:strings.Training}`, strings.areYouSure, [{
+            text: strings.Delete,
             onPress: () => {
                 arr.splice(index, 1);
                 if (type == "Education") {
@@ -108,7 +109,7 @@ export const deleteInfo = (index, arr, type) => {
                 }
             }
         }, {
-            text: "Cancel"
+            text: strings.Cancel
         }])
 
     }
@@ -250,15 +251,15 @@ export const editInfo = (arr, type, navigation) => {
             if (arr.length == 0) {
                 newArr.push([
                     {
-                        title: "School - University",
+                        title: strings.School_university,
                         value: ""
                     },
                     {
-                        title: "Degree",
+                        title: strings.Degree,
                         value: ""
                     },
                     {
-                        title: "Field Of Study",
+                        title: strings.FieldOfStudy,
                         value: ""
                     }
                 ]);
@@ -267,15 +268,15 @@ export const editInfo = (arr, type, navigation) => {
                     const { degree, field, school } = item;
                     newArr.push([
                         {
-                            title: "School - University",
+                            title: strings.School_university,
                             value: school
                         },
                         {
-                            title: "Degree",
+                            title: strings.Degree,
                             value: degree
                         },
                         {
-                            title: "Field Of Study",
+                            title: strings.FieldOfStudy,
                             value: field
                         }
                     ]);
@@ -287,7 +288,7 @@ export const editInfo = (arr, type, navigation) => {
             if (arr.length == 0) {
                 newArr.push([
                     {
-                        title: "Talent",
+                        title: strings.Talents,
                         value: ""
                     }
                 ]);
@@ -295,7 +296,7 @@ export const editInfo = (arr, type, navigation) => {
                 _.each(arr, item => {
                     newArr.push([
                         {
-                            title: "Talent",
+                            title: strings.Talents,
                             value: item.talent
                         }
                     ]);
@@ -307,13 +308,13 @@ export const editInfo = (arr, type, navigation) => {
             if (arr.length == 0) {
                 newArr.push([
                     {
-                        title: "Name Of Class",
+                        title: strings.NameOfClass,
                         value: ""
                     }, {
-                        title: "Name Of Teacher",
+                        title: strings.NameOfTeacher,
                         value: ""
                     }, {
-                        title: "Place You took it at",
+                        title: strings.PlaceyouLook,
                         value: ""
                     }
                 ]);
@@ -323,13 +324,13 @@ export const editInfo = (arr, type, navigation) => {
                     const trainingClass = item.class
                     newArr.push([
                         {
-                            title: "Name Of Class",
+                            title: strings.NameOfClass,
                             value: trainingClass
                         }, {
-                            title: "Name Of Teacher",
+                            title: strings.NameOfTeacher,
                             value: tutor
                         }, {
-                            title: "Place You took it at",
+                            title: strings.PlaceyouLook,
                             value: place
                         }
                     ]);
@@ -340,32 +341,32 @@ export const editInfo = (arr, type, navigation) => {
         } else {
             if (arr.length == 0) {
                 newArr.push([{
-                    title: "Media format",
+                    title: strings.Mediaformat,
                     value: ""
                 }, {
-                    title: "Name Of Show",
+                    title: strings.NameOfShow,
                     value: ""
                 }, {
-                    title: "Media role",
+                    title: strings.MediaRole,
                     value: ""
                 }, {
-                    title: "Name Of Director",
+                    title: strings.NameOfDirector,
                     value: ""
                 }]);
             } else {
                 _.each(arr, item => {
                     const { media_format, show_name, media_role, director_name } = item;
                     newArr.push([{
-                        title: "Media format",
+                        title: strings.Mediaformat,
                         value: media_format
                     }, {
-                        title: "Name Of Show",
+                        title: strings.NameOfShow,
                         value: show_name
                     }, {
-                        title: "Media role",
+                        title: strings.MediaRole,
                         value: media_role
                     }, {
-                        title: "Name Of Director",
+                        title: strings.MediaRole,
                         value: director_name
                     }]);
                 });

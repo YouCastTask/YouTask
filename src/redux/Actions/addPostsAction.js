@@ -12,6 +12,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import AsyncStorage from '@react-native-community/async-storage';
 import { PermissionsAndroid } from 'react-native';
 import { fetchImages, fetchVideos } from './portfolioActions';
+import { strings } from '../../translations/translation';
 
 export const reset = () => {
     return { type: ADD_POSTS_RESET };
@@ -100,7 +101,7 @@ const postPost = (token, caption, data, navigation) => {
             }, {
                 success: () => {
                     dispatch(fetchImages(navigation));
-                    alert("Your Photo Is Posted Successfully");
+                    alert(strings.postedSuccessfully);
                 },
                 error: (error) => {
                     alert(error.response.data.message);
@@ -115,7 +116,7 @@ const postPost = (token, caption, data, navigation) => {
             }, {
                 success: () => {
                     dispatch(fetchVideos(navigation));
-                    alert("Your Video Was Posted Successfully");
+                    alert(strings.videoPostedSuccesfully);
                 },
                 error: (error) => {
                     alert(error.response.data.message);
@@ -132,11 +133,11 @@ export const validateUrl = (url) => {
         let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
         let match = url.match(regExp);
         if (url == '') {
-            dispatch({ type: ADD_POSTS_SET_STATUS, status: 'No url found', statusCode: null });
+            dispatch({ type: ADD_POSTS_SET_STATUS, status: strings.noUrl, statusCode: null });
         } else if (match && match[2].length == 11) {
             dispatch({ type: ADD_POSTS_SET_STATUS, status: 'You can post your video', statusCode: 1 });
         } else {
-            dispatch({ type: ADD_POSTS_SET_STATUS, status: 'Invalid URL', statusCode: 0 });
+            dispatch({ type: ADD_POSTS_SET_STATUS, status: `${strings.invalid} URL`, statusCode: 0 });
         }
     }
 }

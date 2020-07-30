@@ -10,6 +10,7 @@ import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import { fetchPackages, subscripe } from './../../redux/Actions/infoActions';
 import moment from 'moment';
+import { strings } from '../../translations/translation';
 
 class Info extends Component {
 
@@ -80,12 +81,12 @@ class Info extends Component {
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
                     flexs={flexs}
-                    leftSide={<Text style={title}>{`Welcome ${user ? user.name : "YOUCAST"}`}</Text>}
+                    leftSide={<Text style={title}>{`${strings.Welcome} ${user ? user.name : "YOUCAST"}`}</Text>}
                     toolbarHeight={RScaler(10)}
                 />
 
                 <View style={headerView}>
-                    <Text style={headerSubTitle}>{global.type == "Invalid" ? "LOCKED" : global.type}</Text>
+                    <Text style={headerSubTitle}>{global.type == "Invalid" ? strings.Locked : global.type}</Text>
                 </View>
 
                 {loading ? <ActivityIndicator color={Colors.orange} size="large" style={{ marginTop: '50%' }} /> : <ScrollView style={subContainer} showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center' }}>
@@ -98,12 +99,12 @@ class Info extends Component {
                             <Image source={require('./../../assets/default-avatar.png')} style={avatar} />
                             <View style={seperator} />
                             <View style={dateBox}>
-                                <Text style={dateTitle}>Start Date</Text>
+                <Text style={dateTitle}>{strings.Start_Date}</Text>
                                 <Text style={dateText}>{moment(userInfo.started_from * 1000).format('DD MMMM YYYY')}</Text>
                             </View>
                             <View style={seperator} />
                             <View style={dateBox}>
-                                <Text style={dateTitle}>End Date</Text>
+                            <Text style={dateTitle}>{strings.End_Date}</Text>
                                 <Text style={dateText}>{moment(userInfo.end_in * 1000).format('DD MMMM YYYY')}</Text>
                             </View>
                         </View>
@@ -111,11 +112,11 @@ class Info extends Component {
 
                     {global.type == "Basic" ? <Text style={[headerSubTitle, { textAlign: 'center' }]}>{'GET\nPREMIUM'}</Text> : null}
 
-                    {global.type == "Invalid" ? <Text style={upperText}>Locked account means it's unavailable for agencies to find your profile in our database</Text> : null}
-                    {global.type == "Invalid" ? <Text style={upperText}>If you'd like your account to be <Text style={{ color: Colors.orange }}>Activated</Text> please select one of our plans below and we will notify with a date for your casting audition</Text> : null}
+                {global.type == "Invalid" ? <Text style={upperText}>{strings.LockedAccountMeans}</Text> : null}
+                {global.type == "Invalid" ? <Text style={upperText}> {strings.itsTime}<Text style={{ color: Colors.orange }}>{` ${strings.Actiavted} `}</Text>{strings.NotifyAudition}</Text> : null}
 
-                    {global.type == "Premium" ? <Text style={upperText}>Thank you for choosing <Text style={{ color: Colors.orange }}>YOUCAST Premium,</Text> You are featured in our top picks and points system and all your posts are public</Text> : null}
-                    {global.type == "Premium" ? <Text style={upperText}>It's time for you to show your talent to the world</Text> : null}
+                {global.type == "Premium" ? <Text style={upperText}> {strings.ThankYouForChoosing}<Text style={{ color: Colors.orange }}>YOUCAST Premium,</Text> {strings.YouAreFeatured}</Text> : null}
+                {global.type == "Premium" ? <Text style={upperText}>{strings.itsTime}</Text> : null}
 
                     {global.type != "Premium" ?
                         packages.map((item, index) => {

@@ -69,7 +69,7 @@ class Profile extends Component {
                         size: RScaler(4),
                         onPress: () => navigation.dispatch(DrawerActions.openDrawer())
                     }}
-                    flexs={[2, 3, 1]}
+                    flexs={[3, 2, 1]}
                 leftSide={<Text style={title}>{strings.Profile}</Text>}
                     toolbarHeight={RScaler(10)}
                 />
@@ -79,7 +79,7 @@ class Profile extends Component {
                     tabsHeight={RScaler(60)}
                     tabs={[
                         {
-                            title: strings.Photos,
+                            title: (strings.getLanguage()=="en")?strings.Photos:strings.About,
                             View: <Images
                                 height={RScaler(60)}
                                 data={images} />
@@ -90,7 +90,7 @@ class Profile extends Component {
                                 navigation={navigation}
                                 height={RScaler(60)} />
                         }, {
-                            title: strings.About,
+                            title: (strings.getLanguage()=="en")?strings.About:strings.Photos,
                             View: <About
                                 height={RScaler(60)}
                                 data={information}
@@ -111,14 +111,14 @@ class Profile extends Component {
 
                 {global.type == "Invalid" ? <View style={lockedView}>
                     <Image source={require('./../../assets/logo-with-text.png')} style={logo} />
-                    <Text style={whoopsText}>Whoops!</Text>
-                    <Text style={whiteText}>Your profile is currently <Text style={orangeText}>{'locked'}</Text></Text>
-                    <Text style={whiteText}>{'Your profile is what directors first see when they search for talents.\n'}</Text>
-                    <Text style={whiteText}>{'It containt all your data, photo sessions and casting videos.\n'}</Text>
-                    <Text style={whiteText}>{'You need to select one of our plans and wait for your casting audition to '}<Text style={orangeText}>activate</Text> {' your profile.\n'}</Text>
-                    <Text style={whiteText}>{'Meanwhile you can enjoy our app update your portfolio and vote on other users posts.'}</Text>
+                    <Text style={whoopsText}>{strings.Whoops}</Text>
+                    <Text style={whiteText}>{strings.yourProfile}<Text style={orangeText}>{strings.Locked}</Text></Text>
+                    <Text style={whiteText}>{strings.directorsSee}</Text>
+                    <Text style={whiteText}>{strings.ConstraintMessage}</Text>
+                    <Text style={whiteText}>{strings.activateMessage}<Text style={orangeText}>{strings.activate}</Text> {strings.yourProfile}</Text>
+                    <Text style={whiteText}>{strings.meanWhile}</Text>
                     <Button
-                        text="View Plans"
+                        text={strings.viewPlans}
                         textStyle={subscribeBtnText}
                         style={subscribeBtn}
                         background={null}

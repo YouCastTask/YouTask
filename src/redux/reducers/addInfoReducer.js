@@ -11,49 +11,50 @@ import {
     ADD_INFO_ADD_ITEM_TO_TRAINING,
     ADD_INFO_SET_TRAINING_VALUES
 } from './../types';
+import {strings} from "./../../translations/translation"
 
 const initState = {
     educations: [[
         {
-            title: "School - University",
+            title: strings.School_university,
             value: ""
         },
         {
-            title: "Degree",
+            title: strings.Degree,
             value: ""
         },
         {
-            title: "Field Of Study",
+            title: strings.FieldOfStudy,
             value: ""
         }
     ]],
     talents: [[
         {
-            title: "Talent",
+            title: strings.Talents,
             value: ""
         }
     ]],
     experiences: [[{
-        title: "Media format",
+        title: strings.Mediaformat,
         value: ""
     }, {
-        title: "Name Of Show",
+        title: strings.NameOfShow,
         value: ""
     }, {
-        title: "Media role",
+        title: strings.MediaRole,
         value: ""
     }, {
-        title: "Name Of Director",
+        title: strings.NameOfDirector,
         value: ""
     }]],
     trainings: [[{
-        title: "Name Of Class",
+        title: strings.NameOfClass,
         value: ""
     }, {
-        title: "Name Of Teacher",
+        title: strings.NameOfTeacher,
         value: ""
     }, {
-        title: "Place You took it at",
+        title: strings.PlaceyouLook,
         value: ""
     }]],
     loading: false,

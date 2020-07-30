@@ -4,6 +4,7 @@ import { RScaler } from '../lib/utilites';
 import { Colors } from './../../app.json';
 import { Button } from './';
 import { ClickableView } from './ClickableView';
+import {strings} from "./../translations/translation"
 
 type Props = {
     packages: [{
@@ -118,7 +119,7 @@ class PackageSlider extends PureComponent<Props> {
                         }
 
                         <Button
-                            text="GET NOW"
+                            text={strings.GetNow}
                             textStyle={footerBtnText}
                             style={footerBtn}
                             onPress={() => this.handleSubmit(item.id)}

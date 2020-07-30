@@ -7,6 +7,7 @@ import { style } from './../style';
 import { Colors } from './../../../../app.json';
 import { RScaler } from '../../../lib/utilites';
 import { voteDown, voteUp, playYoutubeVideo } from './../../../redux/Actions/homeActions';
+import { strings } from '../../../translations/translation';
 
 class Posts extends Component {
 
@@ -39,7 +40,7 @@ class Posts extends Component {
                     <Image source={avatar ? { uri: `http://youcast.media/${avatar}` } : require('./../../../assets/default-avatar.png')} defaultSource={require('./../../../assets/default-avatar.png')} style={itemAvatar} />
                     <View style={itemUserInfo}>
                         <Text style={userName}>{name}</Text>
-                        <Text style={info}>{`Posted a ${type.toLowerCase()}    ${post_time}`}</Text>
+                        <Text style={info}>{`${strings.Posted} ${type.toLowerCase()=="image"?strings.Image.toLowerCase():strings.Video.toLowerCase()}    ${post_time}`}</Text>
                     </View>
                 </ClickableView>
 
@@ -60,15 +61,15 @@ class Posts extends Component {
                     <ClickableView style={voteBtn} background={null} onPress={() => {
                         voteUp(id, data.posts, item.index, true)
                     }}>
-                        <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>Upvote</Text>
+                        <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>{strings.Upvote}</Text>
                         <Icon name="chevron-triple-up" style={[voteBtnIcon, vote_value == 1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
                     </ClickableView>
-                    <Text style={itemPoints}>{`${points} points`}</Text>
+                    <Text style={itemPoints}>{`${points} ${strings.points}`}</Text>
                     <ClickableView style={voteBtn} background={null} onPress={() => {
                         voteDown(id, data.posts, item.index, true)
                     }}>
                         <Icon name="chevron-triple-down" style={[voteBtnIcon, vote_value == -1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
-                        <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>Downvote</Text>
+                <Text style={[voteBtnText, vote_value == -1 ? { color: Colors.orange } : {}]}>{strings.Downvote}</Text>
                     </ClickableView>
                 </View>
             </View>

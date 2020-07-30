@@ -9,6 +9,7 @@ import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import _ from 'underscore';
 import { getUsers, follow_unfollow, setCategories, getCategories, reset, toggleSearch, getSearchResults, resetSearch } from './../../redux/Actions/hallOfFameActions';
+import { strings } from '../../translations/translation';
 
 class HallOfFames extends Component {
 
@@ -47,7 +48,7 @@ class HallOfFames extends Component {
                 <LinearGradient style={shadeView} colors={['#0000', '#0003', '#0006', '#0009']}>
                     <Text style={name}>{`${user.name} . ${age}`}</Text>
                     <Button
-                        text={is_following ? "Unfollow" : "Follow"}
+                        text={is_following ? strings.UnFollow : strings.Follow}
                         textStyle={followBtnText}
                         style={[followBtn, is_following ? { backgroundColor: Colors.orange } : {}]}
                         background={TouchableNativeFeedback.Ripple(Colors.white, true)}
@@ -86,7 +87,7 @@ class HallOfFames extends Component {
                     <Text style={modelInfoText}>{`${age}, undefined`}</Text>
                 </View>
                 <Button
-                    text={is_following ? "Unfollow" : "Follow"}
+                    text={is_following ? strings.UnFollow : strings.Follow}
                     textStyle={[followingBtnText, is_following ? { color: Colors.orange } : {}]}
                     style={followingBtn}
                     background={null}
@@ -135,7 +136,7 @@ class HallOfFames extends Component {
                         onPress: () => toggleSearch()
                     }}
                     center={{
-                        title: "Hall Of Fame",
+                        title: strings.Hall_Of_Fame,
                         fontFamily: "OpenSans-Bold",
                         color: Colors.white,
                         size: RScaler(3.5)
@@ -186,7 +187,7 @@ class HallOfFames extends Component {
                 />}
 
                 {loading ? null : <ClickableView style={bottomButton} background={null} onPress={() => navigation.navigate('Info')}>
-                    <Text style={bottomButtonTitle}>{`Become a member now\nPromote Your Talent`}</Text>
+                    <Text style={bottomButtonTitle}>{strings.Hall_Of_Fame_Message}</Text>
                 </ClickableView>}
 
                 <Modal
@@ -201,7 +202,7 @@ class HallOfFames extends Component {
                         <View style={searchInputView}>
                             <Icon name="magnify" style={searchIcon} />
                             <TextInput
-                                placeholder="Search"
+                                placeholder={strings.Search}
                                 placeholderTextColor={Colors.dark}
                                 style={searchInput}
                                 selectionColor={Colors.orange}
@@ -213,7 +214,7 @@ class HallOfFames extends Component {
                             />
                         </View>
                         <Button
-                            text="Cancel"
+                            text={strings.Cancel}
                             style={cancelBtn}
                             textStyle={cancelBtnText}
                             background={null}

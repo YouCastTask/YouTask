@@ -8,6 +8,7 @@ import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
 import moment from 'moment';
 import { addDay, editCalendar, reset } from './../../redux/Actions/calendarActions';
+import { strings } from '../../translations/translation';
 
 class Calendars extends Component {
 
@@ -78,7 +79,7 @@ class Calendars extends Component {
                 />
 
                 <View style={subContainer}>
-                    <Text style={caption}>{`Please remove your busy days from the calendar\nClick on the days you want to remove\nLong click to highlight suggested days`}</Text>
+                    <Text style={caption}>{strings.pleaseRemoveBusy}</Text>
 
                     <Calendar
                         minDate={initDate}
@@ -97,10 +98,10 @@ class Calendars extends Component {
 
                     <View style={btnsSection}>
                         <ClickableView disabled={disabled} indicatorColor={Colors.white} style={[btn, { backgroundColor: Colors.orange }]} loading={loading} background={null} onPress={() => editCalendar(days, this.props.navigation.state.params.id, navigation)}>
-                            <Text style={btnText}>Apply</Text>
+                <Text style={btnText}>{StyleSheet.apply}</Text>
                         </ClickableView>
                         <ClickableView style={btn} background={null} onPress={() => navigation.goBack()}>
-                            <Text style={btnText}>Cancel</Text>
+                <Text style={btnText}>{strings.Cancel}</Text>
                         </ClickableView>
                     </View>
                 </View>

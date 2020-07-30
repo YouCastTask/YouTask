@@ -12,6 +12,7 @@ import { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, pl
 import AsyncStorage from '@react-native-community/async-storage';
 import {strings} from "./../../translations/translation"
 
+
 let mainCategoryTabName
 let subCategoryTabName
 
@@ -37,6 +38,7 @@ class Home extends Component {
         const { caption, id, model, points, post_image, post_video, type, vote_value, post_time, height } = item.item;
         const { avatar, is_following, user } = model;
         const { name } = user;
+        //console.log(data)
         const {
             itemContainer,
             itemHeader,
@@ -57,6 +59,7 @@ class Home extends Component {
             playIcon
         } = style;
         const lastIndex = item.index >= data.posts.length - 1;
+        
 
         return (
             <View style={[itemContainer, { marginBottom: lastIndex ? isIPHONEX ? RScaler(12) : isANDROID ? RScaler(2) : RScaler(8.5) : null }]}>
@@ -66,7 +69,7 @@ class Home extends Component {
                     <Image source={avatar ? { uri: `http://youcast.media/${avatar}` } : require('./../../assets/default-avatar.png')} defaultSource={require('./../../assets/default-avatar.png')} style={itemAvatar} />
                     <View style={itemUserInfo}>
                         <Text style={userName}>{name}</Text>
-                        <Text style={info}>{`${strings.Posted} ${type.toLowerCase()}    ${post_time}`}</Text>
+                        <Text style={info}>{`${strings.Posted} ${type.toLowerCase()=="image"?strings.Image.toLowerCase():strings.Video.toUpperCase()}    ${post_time}`}</Text>
                     </View>
                     {user.id == this.id ? null : <Button
                         text={is_following ? strings.UnFollow : strings.Follow}
@@ -99,7 +102,7 @@ class Home extends Component {
                         <Text style={[voteBtnText, vote_value == 1 ? { color: Colors.orange } : {}]}>{strings.Upvote}</Text>
                         <Icon name="chevron-triple-up" style={[voteBtnIcon, vote_value == 1 ? { color: Colors.orange, borderColor: Colors.orange } : {}]} />
                     </ClickableView>
-                    <Text style={itemPoints}>{`${points} points`}</Text>
+                    <Text style={itemPoints}>{`${points} ${strings.points}`}</Text>
                     <ClickableView style={voteBtn} background={null} onPress={() => {
                         voteDown(id, data.posts, item.index)
                     }}>
@@ -159,27 +162,28 @@ class Home extends Component {
                 />
 
                 {!loading ?
-                    <View style={tabsContainer}>
-                        {
-                            mainTabs.map((item, index) => {
-                                const { id, name } = item;
-                                return (
-                                    <ClickableView key={index} style={tabStyle} background={null} onPress={() => {
-                                        _.each(mainTabs, (item, index) => {
-                                            if (name != mainCategoryTabName) {
-                                                mainCategoryTabName = name
-                                                fetchPosts(mainCategoryTabName, subCategoryTabName, true);
-                                            }
-                                            //setMainTabs();
-                                        });
-                                    }}>
-                                        <Text style={[tabTitleStyle, { color: mainCategoryTabName == name ? Colors.orange : Colors.white }]}>{name}</Text>
-                                    </ClickableView>
-                                );
-                            })
-                        }
-                    </View>
-                    : null}
+                     <View style={tabsContainer}>
+                         {
+                             mainTabs.map((item, index) => {
+                                 const { id, name } = item;
+                                console.log(subCategoryTabName)
+                                 return (
+                                     <ClickableView key={index} style={tabStyle} background={null} onPress={() => {
+                                         _.each(mainTabs, (item, index) => {
+                                             if (name != mainCategoryTabName) {
+                                                 mainCategoryTabName = name
+                                                 fetchPosts(mainCategoryTabName, subCategoryTabName, true);
+                                             }
+                                             //setMainTabs();
+                                         });
+                                     }}>
+                                         <Text style={[tabTitleStyle, { color: mainCategoryTabName == name ? Colors.orange : Colors.white }]}>{name}</Text>
+                                     </ClickableView>
+                                 );
+                             })
+                         }
+                     </View>
+                     : null} 
                 {!loading ?
                     <View style={tabsContainer}>
                         {

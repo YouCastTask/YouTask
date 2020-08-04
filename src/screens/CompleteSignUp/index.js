@@ -67,7 +67,7 @@ class CompleteSignUp extends Component {
                     <Text style={caption}>{strings.ReadyAccount}</Text>
 
                     <Button
-                        text="Sign Up"
+                        text={strings.SignUp}
                         textStyle={signUpBtnText}
                         style={signUpBtn}
                         background={null}

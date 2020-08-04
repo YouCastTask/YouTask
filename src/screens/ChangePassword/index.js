@@ -50,7 +50,7 @@ class ChangePassword extends Component {
                             <Icon name="lock-outline" color='#ffffff99' size={RScaler(3.5)} />
                             <TextInput
                                 style={input}
-                                placeholder="New Password"
+                                placeholder={strings.NewPassword}
                                 placeholderTextColor='#ffffff99'
                                 selectionColor={Colors.orange}
                                 onChangeText={updatePassword.bind(this)}

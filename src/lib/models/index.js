@@ -1,6 +1,7 @@
 import axios from "axios";
 import { baseUrl, timeout } from './../../../app.json';
 import AsyncStorage from '@react-native-community/async-storage';
+import { strings } from "../../translations/translation";
 
 const getTokens = async () => {
     const {  refresh_token,token } = JSON.parse(await AsyncStorage.getItem('tokens'));
@@ -19,8 +20,9 @@ const getTokens = async () => {
 }
 
 export const get = (url: String, options: Object, token: String) => {
+    let Localization = strings.getLanguage()
     let requestURL = `${baseUrl}${url}`;
-    axios.get(requestURL, { headers: token ? { Authorization: `Bearer ${token}` } : {}, timeout: timeout })
+    axios.get(requestURL, { headers: token ? { Authorization: `Bearer ${token}`,Localization } : {}, timeout: timeout })
         .then(response => {
             if (options.success) {
                 options.success(response.data);
@@ -42,9 +44,10 @@ export const get = (url: String, options: Object, token: String) => {
 export const remove = (url: String, options: Object, token: String) => {
     let requestURL = `${baseUrl}${url}`;
     let CancelToken = axios.CancelToken;
+    let Localization = strings.getLanguage()
 
     axios.delete(requestURL, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        headers: token ? { Authorization: `Bearer ${token}`,Localization } : {},
         onDownloadProgress: (progress) => {
             if (options.onDownloadProgress) {
                 options.onDownloadProgress(progress);
@@ -80,9 +83,10 @@ export const remove = (url: String, options: Object, token: String) => {
 export const put = (url: String, params: Object, options: Object, token: String) => {
     let requestURL = `${baseUrl}${url}`;
     let CancelToken = axios.CancelToken;
+    let Localization = strings.getLanguage()
 
     axios.put(requestURL, params, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {},
+        headers: token ? { Authorization: `Bearer ${token}`,Localization} : {},
         onDownloadProgress: (progress) => {
             if (options.onDownloadProgress) {
                 options.onDownloadProgress(progress);
@@ -117,9 +121,10 @@ export const put = (url: String, params: Object, options: Object, token: String)
 export const post = (url: String, params: Object, options: Object, token: String) => {
     let requestURL = `${baseUrl}${url}`;
     let CancelToken = axios.CancelToken;
+    let Localization = strings.getLanguage()
 
     axios.post(requestURL, params, {
-        headers: token &&  url !== 'token/refresh'  ? { Authorization: `Bearer ${token}` } : {},
+        headers: token &&  url !== 'token/refresh'  ? { Authorization: `Bearer ${token}`,Localization } : {},
         onDownloadProgress: (progress) => {
             if (options.onDownloadProgress) {
                 options.onDownloadProgress(progress);

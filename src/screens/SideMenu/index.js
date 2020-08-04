@@ -24,6 +24,7 @@ class SideMenu extends Component {
 
     componentDidMount() {
         const { getPortfolio, navigation } = this.props;
+        console.log("DID MOUNT >>>>>>>>>>>>>>>>", this.props)
         getPortfolio(navigation.state.params?.id);
         this.getUserData()
     }

@@ -176,5 +176,10 @@ export default {
     postDeletedSuccessfully:"تم حذف مشاركتك بنجاح",
     postChangedSuccessfully:"تم تغيير مشاركتك بنجاح",
     coverPhotoUpdatedSuccessfully:"تم تحديث صورة الغلاف الخاصة بك",
-    invalid:"غير صالحة"
+    invalid:"غير صالحة",
+    passwordDontMatch:"تأكيد كلمة المرور غير مطابق.",
+    passwordResetedSuccessfully:"تم إعادة تعيين كلمة المرور بنجاح!",
+    signUpSucceed:"نجح الاشتراك",
+    TATOOS:'وشم',
+    SCARS:"جراح"
   }

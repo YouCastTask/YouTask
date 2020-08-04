@@ -177,5 +177,10 @@ export default {
     postDeletedSuccessfully:"Your Post was Deleted Successfully",
     postChangedSuccessfully:"Your Post was Changed Successfully",
     coverPhotoUpdatedSuccessfully:"Your Cover Photo Was Updated",
-    invalid:"Invalid"
+    invalid:"Invalid",
+    passwordDontMatch:'confirm password not match.',
+    passwordResetedSuccessfully:'Password reseted successfully!',
+    signUpSucceed:"signUp succeed",
+    TATOOS:'TATTOOS',
+    SCARS:"SCARS"
   }

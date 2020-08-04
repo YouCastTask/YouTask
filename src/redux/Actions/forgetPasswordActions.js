@@ -115,7 +115,7 @@ export const resetPasswords = () => {
 export const changePassword = (password, again, code, navigation) => {
     return (dispatch) => {
         if (password.trim() != again.trim()) {
-            alert('confirm password not match.');
+            alert(strings.passwordDontMatch);
         } else {
             dispatch({ type: RESET_PASSWORD_LOADING });
 
@@ -129,7 +129,7 @@ export const changePassword = (password, again, code, navigation) => {
                         actions: [NavigationActions.navigate({ routeName: 'SignIn' })],
                     });
                     navigation.dispatch(resetAction);
-                    alert('Password reseted successfully!');
+                    alert(strings.passwordResetedSuccessfully);
                     dispatch({ type: RESET_PASSWORD_STOP_LOADING });
                 },
                 error: (error) => {

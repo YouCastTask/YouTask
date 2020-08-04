@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Modal } from 'react-native';
 import { PackageSlider } from './../../components';
+import { strings } from '../../translations/translation';
 
 type Props = {
     visible: Boolean,
@@ -23,7 +24,12 @@ type Props = {
 class ExModal extends PureComponent<Props> {
 
     render() {
-        const { visible, packages, closeBtnPress, page, submitAction, loading } = this.props;
+        let { visible, packages, closeBtnPress, page, submitAction, loading } = this.props;
+
+        if(strings.getLanguage()=="ar"){
+            (page==0)?page=2:(page==2)?page=0:page=1
+        }
+        console.log(page)
 
         return (
             <Modal visible={visible} animated animationType="fade" transparent supportedOrientations={["portrait"]}>

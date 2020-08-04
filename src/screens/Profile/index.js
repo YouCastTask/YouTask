@@ -52,8 +52,8 @@ class Profile extends Component {
             { attr: strings.BODY_SHAPE, value: body_shape },
             { attr: strings.SKIN_TONE, value: skin_tone },
             { attr: strings.SPOKEN_LANGUAGE, value: languages.map(e => e.name).join(" - ")},
-            { attr: 'TATTOOS', value: tattoos },
-            { attr: 'SCARS', value: scars }
+            { attr: strings.TATOOS, value: tattoos },
+            { attr: strings.SCARS, value: scars }
         ] : [];
 
         return (

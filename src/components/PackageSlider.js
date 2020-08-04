@@ -49,6 +49,13 @@ class PackageSlider extends PureComponent<Props> {
     newStr(str: String) {
         let parts = str.replace('youcast', '%1\nYOUCAST\n%1').replace('YOUCAST', '%1\nYOUCAST\n%1').split('%1');
 
+        // if(strings.getLanguage()=="ar")
+        // {
+        //     for (let i = parts.length; i >0; i--) {
+        //         parts[i] = <Text key={i} style={parts[i] == '\nYOUCAST\n' ? { color: Colors.orange } : {}}>{parts[i]}</Text>;
+        //     }
+        // }
+
         for (let i = 0; i < parts.length; i++) {
             parts[i] = <Text key={i} style={parts[i] == '\nYOUCAST\n' ? { color: Colors.orange } : {}}>{parts[i]}</Text>;
         }
@@ -64,7 +71,8 @@ class PackageSlider extends PureComponent<Props> {
 
     renderItem({ item }) {
         const { closeBtnPress, loading } = this.props;
-        const { title, cost, period, first_caption, second_caption, footer_title, options } = item;
+        let { title, cost, period, first_caption, second_caption, footer_title, options } = item;
+    
         const {
             overlay,
             itemOverlay,
@@ -83,6 +91,7 @@ class PackageSlider extends PureComponent<Props> {
             footerBtn,
             footerBtnText
         } = styles;
+        first_caption = first_caption.concat('\n')
         const str = String(first_caption).concat(String(second_caption));
 
         return (
@@ -158,23 +167,24 @@ class PackageSlider extends PureComponent<Props> {
         const { packages, tabsHeight, loading } = this.props;
         const { container, flatList } = styles;
         return (
-            <View style={[container, { height: tabsHeight }]}>
-                <FlatList
-                    horizontal
-                    data={packages}
-                    pagingEnabled
-                    bounces={false}
-                    extraData={width}
-                    scrollEnabled={!loading}
-                    ref={ref => this.flatList = ref}
-                    showsHorizontalScrollIndicator={false}
-                    renderItem={this.renderItem.bind(this)}
-                    keyExtractor={(item, index) => index.toString()}
-                    onScroll={this.onScroll.bind(this)}
-                    style={flatList}
-                />
+            
+             <View style={[container, { height: tabsHeight }]}>
+                 <FlatList
+                     horizontal
+                     data={packages}
+                     pagingEnabled
+                     bounces={false}
+                     extraData={width}
+                     scrollEnabled={!loading}
+                     ref={ref => this.flatList = ref}
+                     showsHorizontalScrollIndicator={false}
+                     renderItem={this.renderItem.bind(this)}
+                     keyExtractor={(item, index) => index.toString()}
+                     onScroll={this.onScroll.bind(this)}
+                     style={flatList}
+                 />
 
-            </View>
+             </View>
         );
     }
 

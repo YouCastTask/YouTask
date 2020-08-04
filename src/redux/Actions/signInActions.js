@@ -76,7 +76,7 @@ export const signIn = (email, password, navigation, fromRegisteration) => {
                                                     appIconSource: require('./../../assets/logo.png'),
                                                     appTitle: 'YOUCAST',
                                                     timeText: 'Now',
-                                                    title: 'Signup successed',
+                                                    title: strings.signUpSucceed,
                                                     body: String(i.body),
                                                     slideOutTime: 5000
                                                 });

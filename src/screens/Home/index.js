@@ -11,6 +11,7 @@ import _ from 'underscore';
 import { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, playYoutubeVideo } from './../../redux/Actions/homeActions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {strings} from "./../../translations/translation"
+import { fetchImages, getPortfolio } from './../../redux/Actions/portfolioActions';
 
 
 let mainCategoryTabName
@@ -38,7 +39,7 @@ class Home extends Component {
         const { caption, id, model, points, post_image, post_video, type, vote_value, post_time, height } = item.item;
         const { avatar, is_following, user } = model;
         const { name } = user;
-        //console.log(data)
+        //console.log(item.item)
         const {
             itemContainer,
             itemHeader,
@@ -59,6 +60,8 @@ class Home extends Component {
             playIcon
         } = style;
         const lastIndex = item.index >= data.posts.length - 1;
+
+        
         
 
         return (
@@ -155,7 +158,11 @@ class Home extends Component {
                         iconType: 'material',
                         color: Colors.white,
                         size: RScaler(4),
-                        onPress: () => navigation.dispatch(DrawerActions.openDrawer())
+                        onPress: () => {
+                            const { getPortfolio, navigation } = this.props;
+                            getPortfolio(navigation.state.params?.id);
+                            navigation.dispatch(DrawerActions.openDrawer())
+                        }
                     }}
                     flexs={[2, 2.5, 1]}
                 leftSide={<Text style={title}>{strings.Discover}</Text>}
@@ -238,4 +245,4 @@ function MapStateToProps(state) {
     }
 }
 
-export default connect(MapStateToProps, { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, playYoutubeVideo })(Home);
+export default connect(MapStateToProps, { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, playYoutubeVideo, getPortfolio })(Home);

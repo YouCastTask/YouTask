@@ -30,7 +30,7 @@ class Portfolio extends Component {
 
     componentDidMount() {
         const { getPortfolio, navigation } = this.props;
-        getPortfolio(navigation.state.params?.id);
+        getPortfolio(navigation.state.params?.id)
     }
 
     componentWillUnmount() {

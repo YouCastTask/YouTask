@@ -24,8 +24,8 @@ class SideMenu extends Component {
 
     componentDidMount() {
         const { getPortfolio, navigation } = this.props;
-        console.log("DID MOUNT >>>>>>>>>>>>>>>>", this.props)
         getPortfolio(navigation.state.params?.id);
+
         this.getUserData()
     }
 
@@ -42,13 +42,14 @@ class SideMenu extends Component {
             title: strings.Portfolio,
             icon: 'file',
             action: 'Portfolio'
-        },
+        }
+        /** ,
         {
             title: strings.Hall_Of_Fame,
             icon: require('./../../assets/logo.png'),
             action: 'HallOfFame',
             image: true
-        },
+        }**/,
         {
             title: strings.Location,
             icon: 'map-marker',
@@ -89,7 +90,7 @@ class SideMenu extends Component {
 
     render() {
         const { user } = this.state;
-        const { data, fetchImages, navigation } = this.props;
+        const { data, fetchImages, navigation} = this.props;
         const {coverUrl, id ,me} = data;
         const {
             container,

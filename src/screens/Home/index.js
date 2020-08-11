@@ -12,6 +12,8 @@ import { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, pl
 import AsyncStorage from '@react-native-community/async-storage';
 import {strings} from "./../../translations/translation"
 import { fetchImages, getPortfolio } from './../../redux/Actions/portfolioActions';
+import { get } from '../../lib/models';
+import { Avatar } from 'react-native-paper';
 
 
 let mainCategoryTabName
@@ -22,6 +24,8 @@ class Home extends Component {
     id;
 
     async componentDidMount() {
+        const { getPortfolio, navigation } = this.props;
+        
         this.props.setMainTabs();
         setTimeout(
             async () => {
@@ -32,14 +36,20 @@ class Home extends Component {
             }, 3000
         )
 
+        ///console.log(this.props)
+
     }
 
     renderItem(item) {
-        const { data, navigation, follow_unfollow, voteDown, voteUp, playYoutubeVideo } = this.props;
+
+        
+
+        const { data, navigation, follow_unfollow, voteDown, voteUp, playYoutubeVideo} = this.props;
+        
         const { caption, id, model, points, post_image, post_video, type, vote_value, post_time, height } = item.item;
-        const { avatar, is_following, user } = model;
+        const { avatar, is_following, user ,cover_photo} = model;
         const { name } = user;
-        //console.log(item.item)
+
         const {
             itemContainer,
             itemHeader,
@@ -69,7 +79,7 @@ class Home extends Component {
                 <ClickableView style={itemHeader} background={null} onPress={() => {
                     navigation.navigate('Portfolio', { id: model.id });
                 }}>
-                    <Image source={avatar ? { uri: `http://youcast.media/${avatar}` } : require('./../../assets/default-avatar.png')} defaultSource={require('./../../assets/default-avatar.png')} style={itemAvatar} />
+                    <Image source={cover_photo? { uri: `http://youcast.media/${cover_photo.image_path}` } : require('./../../assets/default-avatar.png')} defaultSource={require('./../../assets/default-avatar.png')} style={itemAvatar} />
                     <View style={itemUserInfo}>
                         <Text style={userName}>{name}</Text>
                         <Text style={info}>{`${strings.Posted} ${type.toLowerCase()=="image"?strings.Image.toLowerCase():strings.Video.toUpperCase()}    ${post_time}`}</Text>
@@ -160,7 +170,7 @@ class Home extends Component {
                         size: RScaler(4),
                         onPress: () => {
                             const { getPortfolio, navigation } = this.props;
-                            getPortfolio(navigation.state.params?.id);
+                            getPortfolio(navigation.state.params?.id)
                             navigation.dispatch(DrawerActions.openDrawer())
                         }
                     }}
@@ -241,7 +251,7 @@ const isANDROID = Platform.OS === 'android';
 
 function MapStateToProps(state) {
     return {
-        data: state.Home
+        data: state.Home,
     }
 }
 

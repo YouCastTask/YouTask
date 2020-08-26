@@ -251,7 +251,7 @@ export const upload = (images, data, navigation) => {
                         const { month, year, day, iso, id, fullname, email, password, phone } = data;
                         const getDate = new Date(`${day < 10 ? '0' + day : day} ${month} ${year}`).toUTCString();
                         const ms = parseInt(new Date(getDate).getTime()) + 86400000;
-                        console.log(ms)
+                        
 
                         signUp({
                             email: String(email).toLowerCase(),

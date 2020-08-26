@@ -40,7 +40,7 @@ export const setBio = (about) => {
 }
 
 export const getPortfolio = (id) => {
-    console.log("Portfolio function >>")
+    
     return async (dispatch) => {
 
         const { token } = JSON.parse(await AsyncStorage.getItem('tokens'));

@@ -17,11 +17,11 @@ export const getUserInfo = () => {
             success: (response) => {
                 let images = [], videos = [];
 
-                _.each(response.data.user.images, item => {
-                    images.push({ source: { uri: `http://youcast.media/${item.title}` } })
+                _.each(response.data.model_images, item => {
+                    images.push({ source: { uri: `http://youcast.media/${item.model_image_path}` } })
                 });
 
-                _.each(response.data.user.videos, item => {
+                _.each(response.data.model_videos, item => {
                     videos.push(item);
                 });
 

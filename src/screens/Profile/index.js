@@ -19,6 +19,7 @@ class Profile extends Component {
     }
 
     render() {
+
         const { navigation, data } = this.props;
         const { loading, info, images, videos } = data;
         const { user, age, nationality, height, skin_tone, weight, hair_type, hair_color, eye_color, body_shape, languages, tattoos, scars, model_categories } = info;

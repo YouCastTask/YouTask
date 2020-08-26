@@ -28,7 +28,6 @@ class Videos extends PureComponent {
         const { total } = this.state;
         const { height, data, navigation } = this.props;
         const { container, overlay, contetnContainer, title, videoContainer, image, row, counter } = styles;
-
         return (
             <SafeAreaView style={[container, { height: height }]}>
                 <View style={overlay} />
@@ -41,8 +40,8 @@ class Videos extends PureComponent {
                                 <View style={videoContainer}>
                                     {/* {uri: `http://youcast.media/data/uploads/${i.title}` } */}
                                     <Image source={
-                                        i.video_thumbnail?
-                                        {uri: `${i.video_thumbnail}`}
+                                        i.model_video_thumbnail_path?
+                                        {uri: `${i.model_video_thumbnail_path}`}
                                         :
                                         require('./../../../assets/default-cover.png')
                                     }

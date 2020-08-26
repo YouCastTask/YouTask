@@ -28,8 +28,7 @@ class ExModal extends PureComponent<Props> {
 
         if(strings.getLanguage()=="ar"){
             (page==0)?page=2:(page==2)?page=0:page=1
-        }
-        console.log(page)
+        
 
         return (
             <Modal visible={visible} animated animationType="fade" transparent supportedOrientations={["portrait"]}>

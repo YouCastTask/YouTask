@@ -34,14 +34,14 @@ class Videos extends PureComponent {
                 {
                     data.map((i, index) => {
                         return (
-                            <ClickableView style={contetnContainer} background={null} key={index} onPress={() => navigation.navigate('VideoPlayer', { source: { uri: `http://youcast.media/data/uploads/${i.title}` } })}>
+                            <ClickableView style={contetnContainer} background={null} key={index} onPress={() => navigation.navigate('VideoPlayer', { source: { uri: `http://youcast.media${i.model_video_path}` } })}>
                                 
                                 <Text style={title}>{strings.GeneralCasting} {strings.Video}</Text>
                                 <View style={videoContainer}>
                                     {/* {uri: `http://youcast.media/data/uploads/${i.title}` } */}
                                     <Image source={
                                         i.model_video_thumbnail_path?
-                                        {uri: `${i.model_video_thumbnail_path}`}
+                                        {uri: `http://youcast.media${i.model_video_thumbnail_path}`}
                                         :
                                         require('./../../../assets/default-cover.png')
                                     }
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
         top: RScaler(8)
     },
     contetnContainer: {
-        width: '90%',
+        width: '100%',
         height: '80%',
         alignItems: 'center',
         backgroundColor: 'transparent',

@@ -66,7 +66,7 @@ class Info extends Component {
             dateText,
             planMainBtn
         } = style;
-
+        
         return (
             <SafeAreaView style={container}>
                 <StatusBar hidden />
@@ -118,7 +118,7 @@ class Info extends Component {
                 {global.type == "Premium" ? <Text style={upperText}> {strings.ThankYouForChoosing}<Text style={{ color: Colors.orange }}>YOUCAST Premium,</Text> {strings.YouAreFeatured}</Text> : null}
                 {global.type == "Premium" ? <Text style={upperText}>{strings.itsTime}</Text> : null}
 
-                    {global.type != "Premium" ?
+                {(global.type != "Premium" && global.type!="Special")?
                         packages.map((item, index) => {
                             const { type, price, period } = item;
                             const lastIndex = index >= packages.length - 1;

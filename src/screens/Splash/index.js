@@ -13,8 +13,6 @@ class Splash extends Component {
             rotate: new Animated.Value(0),
             opacity: new Animated.Value(0)
         }
-
-        global.type = "Invalid";
     }
 
     async componentDidMount() {
@@ -25,6 +23,7 @@ class Splash extends Component {
             this.props.setStaticData();
             this.props.setCountries();
         }
+        
 
         Animated.sequence([
             Animated.timing(rotate, {

@@ -178,7 +178,7 @@ export const updateEmail = (email) => {
 
 export const updatePassword = (password) => {
     const trim = String(password).trim();
-    const passwordRegx = RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)
+    const passwordRegx = RegExp(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
     const valid = passwordRegx.test(password);
 
     if(password.length==0)

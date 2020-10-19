@@ -95,7 +95,7 @@ export default {
     Reset_Password:"Reset Password",
     Have_Account:"HAVE AN ACCOUNT?",
     DontHaveAccount:"DON'T HAVE AN ACCOUNT?",
-    PasswordError:'password must be 8 characters long,contain alphanumeric digits and 1 special character like @/#/&',
+    PasswordError:'password must be 8 characters long,contain alphanumeric digits',
     Verification_Code:'Please enter the verification code',
     Code_Sent:"We have sent the code to your email ID",
     ADD:"ADD",

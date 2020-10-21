@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Dimensions, Image,ScrollView,TouchableOpacity ,FlatList} from 'react-native';
 import Video from 'react-native-video-controls';
 import { RScaler } from './../../../lib/utilites';
 import { Colors } from './../../../../app.json';
@@ -24,41 +24,46 @@ class Videos extends PureComponent {
         }, 300);
     }
 
-    render() {
+    renderItem({item}) {
         const { total } = this.state;
         const { height, data, navigation } = this.props;
         const { container, overlay, contetnContainer, title, videoContainer, image, row, counter } = styles;
         return (
             <SafeAreaView style={[container, { height: height }]}>
                 <View style={overlay} />
-                {
-                    data.map((i, index) => {
-                        return (
-                            <ClickableView style={contetnContainer} background={null} key={index} onPress={() => navigation.navigate('VideoPlayer', { source: { uri: `http://youcast.media${i.model_video_path}` } })}>
+                            <TouchableOpacity style={contetnContainer} background={null}  onPress={() => navigation.navigate('VideoPlayer', { source: { uri: `http://youcast.media${item.model_video_path}` } })}>
                                 
                                 <Text style={title}>{strings.GeneralCasting} {strings.Video}</Text>
                                 <View style={videoContainer}>
                                     {/* {uri: `http://youcast.media/data/uploads/${i.title}` } */}
                                     <Image source={
-                                        i.model_video_thumbnail_path?
-                                        {uri: `http://youcast.media${i.model_video_thumbnail_path}`}
+                                        item.model_video_thumbnail_path?
+                                        {uri: `http://youcast.media${item.model_video_thumbnail_path}`}
                                         :
                                         require('./../../../assets/default-cover.png')
                                     }
                         
                                         style={image} />
                                 </View>
-
-                                <View style={row}>
-                                    <Text style={counter}>{`${index + 1}/${total}`}</Text>
-                                </View>
-                            </ClickableView>
-                        );
-                    })
-                }
-            </SafeAreaView>
+                            </TouchableOpacity>
+             </SafeAreaView> 
+            
         );
     }
+    render(){
+        const { height, data, navigation } = this.props;
+        const { container, overlay, contetnContainer, title, videoContainer, image, row, counter } = styles;
+        return (
+            
+                <FlatList
+                data={data}
+                renderItem={this.renderItem.bind(this)}
+          />
+            
+    
+        );
+    }
+    
 }
 
 const { width, height } = Dimensions.get('screen');

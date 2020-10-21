@@ -32,9 +32,18 @@ export const style = StyleSheet.create({
         width: width,
         backgroundColor: Colors.gray,
         flexDirection: 'row',
-        zIndex: 5
+        zIndex: 5,
+        flexWrap:"wrap"
     },
     tabStyle: {
+        width: '19%',
+        height: 35,
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        borderRadius: 0,
+        shadowOpacity: 0
+    },
+    tabStyle1: {
         width: '19%',
         height: 35,
         backgroundColor: 'transparent',
@@ -45,6 +54,13 @@ export const style = StyleSheet.create({
     tabTitleStyle: {
         fontFamily: regular,
         fontSize: RScaler(1.8)
+    },
+    tabTitleStyle1: {
+        fontFamily: regular,
+        fontSize: RScaler(1.8),
+        borderWidth:1,
+        borderColor:Colors.white,
+        padding:10
     },
     itemContainer: {
         width: width,

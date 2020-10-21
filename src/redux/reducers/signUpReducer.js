@@ -16,7 +16,15 @@ import {
     SIGN_UP_SET_CITES,
     SIGN_UP_SET_COUNTRIES,
     SIGN_UP_UPDATE_CITY,
-    SIGN_UP_UPDATE_COUNTRY
+    SIGN_UP_UPDATE_COUNTRY,
+    VERIFY_CODE_UPDATE_1,
+    VERIFY_CODE_UPDATE_2,
+    VERIFY_CODE_UPDATE_3,
+    VERIFY_CODE_UPDATE_4,
+    VERIFY_CODE_UPDATE_5,
+    VERIFY_CODE_LOADING,
+    VERIFY_CODE_STOP_LOADING,
+    VERIFY_CODE_RESET
 } from './../types';
 
 const initState = {
@@ -40,7 +48,13 @@ const initState = {
     months: [],
     days: [],
     years: [],
-    loading: false
+    loading: false,
+    _1: '',
+    _2: '',
+    _3: '',
+    _4: '',
+    _5: '',
+    verifyLoading: false
 }
 
 export default (state = initState, action) => {
@@ -95,6 +109,37 @@ export default (state = initState, action) => {
 
         case SIGN_UP_UPDATE_MONTH:
             return { ...state, month: action.month };
+            case VERIFY_CODE_UPDATE_1:
+            return { ...state, _1: action._1 };
+
+        case VERIFY_CODE_UPDATE_2:
+            return { ...state, _2: action._2 };
+
+        case VERIFY_CODE_UPDATE_3:
+            return { ...state, _3: action._3 };
+
+        case VERIFY_CODE_UPDATE_4:
+            return { ...state, _4: action._4 };
+
+        case VERIFY_CODE_UPDATE_5:
+            return { ...state, _5: action._5 };
+
+        case VERIFY_CODE_STOP_LOADING:
+            return { ...state, verifyLoading: false };
+
+        case VERIFY_CODE_LOADING:
+            return { ...state, verifyLoading: true };
+
+        case VERIFY_CODE_RESET:
+            return {
+                ...state,
+                _1: '',
+                _2: '',
+                _3: '',
+                _4: '',
+                _5: '',
+                verifyLoading: false
+            };
 
         case SIGN_UP_RESET:
             return {

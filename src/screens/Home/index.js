@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView, Text, StatusBar, View, Image, Dimensions, Platform, ActivityIndicator } from 'react-native';
+import { SafeAreaView,StyleSheet, Text, StatusBar, View, Image, Dimensions, Platform, ActivityIndicator ,Modal,TouchableHighlight,TouchableOpacity} from 'react-native';
 import { ClickableView, Toolbar, ListView, Button } from './../../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { DrawerActions } from 'react-navigation-drawer';
@@ -15,13 +15,48 @@ import { fetchImages, getPortfolio } from './../../redux/Actions/portfolioAction
 import { get } from '../../lib/models';
 import { Avatar } from 'react-native-paper';
 
+const styles = StyleSheet.create({
+    centeredView: {
+      flex: 1,
+      marginTop:100
+     
+    },
+    modalView: {
+      backgroundColor: Colors.gray,
+      borderRadius: 20,
+      padding: 100,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5
+    },
+    textStyle: {
+      color: "white",
+      fontWeight: "bold",
+      textAlign: "center"
+    },
+  });
 
 let mainCategoryTabName
 let subCategoryTabName
 
 class Home extends Component {
-
     id;
+    constructor() {
+        super();
+
+        this.state = {
+            modalVisible:false
+        }
+    }
+
+    setModalVisible = (visible) => {
+        this.setState({ modalVisible: visible });
+      }
 
     async componentDidMount() {
         const { getPortfolio, navigation } = this.props;
@@ -41,9 +76,6 @@ class Home extends Component {
     }
 
     renderItem(item) {
-
-        
-
         const { data, navigation, follow_unfollow, voteDown, voteUp, playYoutubeVideo} = this.props;
         
         const { caption, id, model, points, post_image, post_video, type, vote_value, post_time, height } = item.item;
@@ -70,8 +102,6 @@ class Home extends Component {
             playIcon
         } = style;
         const lastIndex = item.index >= data.posts.length - 1;
-
-        
         
 
         return (
@@ -154,7 +184,9 @@ class Home extends Component {
             title,
             tabsContainer,
             tabStyle,
-            tabTitleStyle
+            tabTitleStyle,
+            tabTitleStyle1,
+            tabStyle1
         } = style;
 
         return (
@@ -178,29 +210,7 @@ class Home extends Component {
                 leftSide={<Text style={title}>{strings.Discover}</Text>}
                 />
 
-                {!loading ?
-                     <View style={tabsContainer}>
-                         {
-                             mainTabs.map((item, index) => {
-                                 const { id, name } = item;
-                                console.log(subCategoryTabName)
-                                 return (
-                                     <ClickableView key={index} style={tabStyle} background={null} onPress={() => {
-                                         _.each(mainTabs, (item, index) => {
-                                             if (name != mainCategoryTabName) {
-                                                 mainCategoryTabName = name
-                                                 fetchPosts(mainCategoryTabName, subCategoryTabName, true);
-                                             }
-                                             //setMainTabs();
-                                         });
-                                     }}>
-                                         <Text style={[tabTitleStyle, { color: mainCategoryTabName == name ? Colors.orange : Colors.white }]}>{name}</Text>
-                                     </ClickableView>
-                                 );
-                             })
-                         }
-                     </View>
-                     : null} 
+                 
                 {!loading ?
                     <View style={tabsContainer}>
                         {
@@ -226,6 +236,14 @@ class Home extends Component {
                                 );
                             })
                         }
+                        <TouchableOpacity style={{flexDirection:'row',justifyContent:"flex-start",borderWidth:1,borderRadius:15,backgroundColor:Colors.orange}} 
+                        onPress={()=>{
+                            this.setModalVisible(!this.state.modalVisible)
+                        }}>
+                            <Text style={{color:Colors.white,marginLeft:8}}>Channel</Text>
+                            <Icon name="chevron-double-down" size={25} color={Colors.white}/>
+                    <Text style={{color:Colors.white,marginRight:8}}>{mainCategoryTabName}</Text>
+                        </TouchableOpacity>
                     </View>
                     : null}
 
@@ -240,7 +258,45 @@ class Home extends Component {
                     style={{ backgroundColor: Colors.dark }}
                 />}
 
+        <Modal
+          animationType="slide"
+          visible={this.state.modalVisible}
+          transparent={true}
+          presentationStyle="fullScreen"
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+            <Text style={{ color: Colors.white }}>{"Select a Channel"}</Text>
+            {!loading ?
+                     <View style={tabsContainer}>
+                         {
+                             mainTabs.map((item, index) => {
+                                 const { id, name } = item;
+                                 return (
+                                     <ClickableView key={index} style={tabStyle1} background={null} onPress={() => {
+                                         _.each(mainTabs, (item, index) => {
+                                             if (name != mainCategoryTabName) {
+                                                 mainCategoryTabName = name
+                                                 fetchPosts(mainCategoryTabName, subCategoryTabName, true);
+                                             }
+                                             setMainTabs();
+                                             this.setModalVisible(!this.state.modalVisible)
+                                         });
+                                     }}>
+                                         <Text style={[tabTitleStyle1, { color: mainCategoryTabName == name ? Colors.orange : Colors.white }]}>{name}</Text>
+                                     </ClickableView>
+                                 );
+                             })
+                         }
+                     </View>
+                     : null}
+              
+            </View>
+          </View>
+        </Modal>
+            
             </SafeAreaView>
+            
         );
     }
 }

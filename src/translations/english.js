@@ -98,6 +98,8 @@ export default {
     PasswordError:'password must be 8 characters long,contain alphanumeric digits',
     Verification_Code:'Please enter the verification code',
     Code_Sent:"We have sent the code to your email ID",
+    Verification_Code_Phone:'Please confirm your Phone Number',
+    Code_Sent_Phone:"We have sent the code to your Phone Number",
     ADD:"ADD",
     phoneError:"Phone number can't be less than 11 number.",
     noPost:"No Posts Yet.\nNo one posted a photo or video yet",

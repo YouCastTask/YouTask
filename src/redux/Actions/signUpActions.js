@@ -16,7 +16,15 @@ import {
     SIGN_UP_SET_CITES,
     SIGN_UP_SET_COUNTRIES,
     SIGN_UP_UPDATE_CITY,
-    SIGN_UP_UPDATE_COUNTRY
+    SIGN_UP_UPDATE_COUNTRY,
+    VERIFY_CODE_UPDATE_1,
+    VERIFY_CODE_UPDATE_2,
+    VERIFY_CODE_UPDATE_3,
+    VERIFY_CODE_UPDATE_4,
+    VERIFY_CODE_UPDATE_5,
+    VERIFY_CODE_LOADING,
+    VERIFY_CODE_STOP_LOADING,
+    VERIFY_CODE_RESET
 } from './../types';
 import moment from 'moment';
 import _ from 'underscore';
@@ -290,6 +298,28 @@ export const upload = (images, data, navigation) => {
     }
 }
 
+export const updateInput = (value, id) => {
+    switch (id) {
+        case 1:
+            return { type: VERIFY_CODE_UPDATE_1, _1: value }
+        case 2:
+            return { type: VERIFY_CODE_UPDATE_2, _2: value }
+        case 3:
+            return { type: VERIFY_CODE_UPDATE_3, _3: value }
+        case 4:
+            return { type: VERIFY_CODE_UPDATE_4, _4: value }
+        case 5:
+            return { type: VERIFY_CODE_UPDATE_5, _5: value }
+    }
+}
+export const resetInputs = () => {
+    return { type: VERIFY_CODE_RESET };
+}
+
+export const VerifyCode = (code , navigation)=>{
+navigation.navigate("CompleteSignUp")
+}
+
 export const validation = (data, navigation) => {
     return (dispatch) => {
         dispatch({ type: SIGN_UP_LOADING });
@@ -303,7 +333,7 @@ export const validation = (data, navigation) => {
             phone: phone
         }, {
             success: () => {
-                navigation.navigate('CompleteSignUp');
+                navigation.navigate('VerifyPhone');
                 dispatch({ type: SIGN_UP_STOP_LOADING });
             },
             error: (error) => {

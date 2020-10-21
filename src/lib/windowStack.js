@@ -31,6 +31,7 @@ import AddInfo from './../screens/AddInfo';
 import PostDetails from './../screens/PostDetails';
 import VideoPlayer from './../screens/VideoPlayer';
 import PhotosMainPage from '../screens/Portfolio/PhotosMainPage'
+import VerifyPhone from '../screens/VerifyPhone'
 import { RScaler } from './utilites.js';
 
 const initialRouteName = "Splash";
@@ -39,11 +40,18 @@ const handleCustomTransition = ({ scenes }) => {
     const prevScene = scenes[scenes.length - 2];
     const nextScene = scenes[scenes.length - 1];
 
-    if (prevScene && prevScene.route.routeName === "SignUp" && nextScene.route.routeName === "CompleteSignUp") {
+    if (prevScene && prevScene.route.routeName === "SignUp" && nextScene.route.routeName === "VerifyPhone") {
         return fromRight();
-    } else if (prevScene && nextScene.route.routeName === "SignUp" && prevScene.route.routeName === "CompleteSignUp") {
+    } else if (prevScene && nextScene.route.routeName === "SignUp" && prevScene.route.routeName === "VerifyPhone") {
         return fromLeft();
-    } else if (prevScene && prevScene.route.routeName === "ForgetPassword" && nextScene.route.routeName === "VerifyCode") {
+    } 
+    else if (prevScene && prevScene.route.routeName === "VerifyPhone" && nextScene.route.routeName === "CompleteSignUp"){
+        return fromRight();
+    }
+    else if(prevScene && prevScene.route.routeName === "CompleteSignUp" && nextScene.route.routeName === "VerifyPhone"){
+        return fromRight();
+    }
+    else if (prevScene && prevScene.route.routeName === "ForgetPassword" && nextScene.route.routeName === "VerifyCode") {
         return fromRight();
     } else if (prevScene && nextScene.route.routeName === "VerifyCode" && prevScene.route.routeName === "ForgetPassword") {
         return fromLeft();
@@ -124,6 +132,7 @@ const WindowStack = createStackNavigator({
     SignIn: { screen: SignIn },
     SignUp: { screen: SignUp },
     ForgetPassword: { screen: ForgetPassword },
+    VerifyPhone:{screen: VerifyPhone},
     CompleteSignUp: { screen: CompleteSignUp },
     Location: { screen: Location },
     ContactUs: { screen: ContactUs },

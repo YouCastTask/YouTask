@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { style } from './style';
 import { Colors } from './../../../app.json';
 import { RScaler } from '../../lib/utilites';
-import _ from 'underscore';
+import _, { reduce } from 'underscore';
 import { fetchPosts, setMainTabs, setTabs, follow_unfollow, voteDown, voteUp, playYoutubeVideo } from './../../redux/Actions/homeActions';
 import AsyncStorage from '@react-native-community/async-storage';
 import {strings} from "./../../translations/translation"
@@ -18,27 +18,39 @@ import { Avatar } from 'react-native-paper';
 const styles = StyleSheet.create({
     centeredView: {
       flex: 1,
-      marginTop:100
-     
+      marginTop:100,
+      borderWidth:9
     },
     modalView: {
       backgroundColor: Colors.gray,
-      borderRadius: 20,
-      padding: 100,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5
+      opacity:0.9,
+      paddingTop:30,
+      paddingBottom:30,
+      paddingLeft:15,
+      paddingRight:15,
     },
     textStyle: {
       color: "white",
       fontWeight: "bold",
-      textAlign: "center"
+      textAlign: "center",
     },
+    channel:{
+        flexDirection:'row',
+        justifyContent:"space-evenly",
+        borderWidth:1,
+        borderRadius:15,
+        backgroundColor:Colors.orange,
+        alignItems:"center",
+        paddingLeft:5,
+        paddingRight:5,
+        marginBottom:15
+    },
+    SelectText:{
+        color: Colors.white,
+        fontSize:35,
+        marginBottom:50,
+        textAlign:"center"
+    }
   });
 
 let mainCategoryTabName
@@ -236,7 +248,7 @@ class Home extends Component {
                                 );
                             })
                         }
-                        <TouchableOpacity style={{flexDirection:'row',justifyContent:"flex-start",borderWidth:1,borderRadius:15,backgroundColor:Colors.orange}} 
+                        <TouchableOpacity style={styles.channel} 
                         onPress={()=>{
                             this.setModalVisible(!this.state.modalVisible)
                         }}>
@@ -262,11 +274,10 @@ class Home extends Component {
           animationType="slide"
           visible={this.state.modalVisible}
           transparent={true}
-          presentationStyle="fullScreen"
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-            <Text style={{ color: Colors.white }}>{"Select a Channel"}</Text>
+            <Text style={styles.SelectText}>{"Select a Channel"}</Text>
             {!loading ?
                      <View style={tabsContainer}>
                          {

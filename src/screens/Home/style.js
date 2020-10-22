@@ -28,13 +28,6 @@ export const style = StyleSheet.create({
         fontSize: RScaler(3.5),
         color: Colors.white
     },
-    tabsContainer: {
-        width: width,
-        backgroundColor: Colors.gray,
-        flexDirection: 'row',
-        zIndex: 5,
-        flexWrap:"wrap"
-    },
     tabStyle: {
         width: '19%',
         height: 35,
@@ -43,24 +36,35 @@ export const style = StyleSheet.create({
         borderRadius: 0,
         shadowOpacity: 0
     },
+
+    tabsContainer: {
+        width: width,
+        backgroundColor: Colors.gray,
+        flexDirection: 'row',
+        flexWrap:"wrap",
+    },
+   
     tabStyle1: {
-        width: '19%',
-        height: 35,
+        width: "45%",
+        height:60,
         backgroundColor: 'transparent',
-        borderWidth: 0,
-        borderRadius: 0,
-        shadowOpacity: 0
+        justifyContent:"center",
+        alignItems:"center",
+        marginBottom:30,
     },
     tabTitleStyle: {
         fontFamily: regular,
         fontSize: RScaler(1.8)
     },
     tabTitleStyle1: {
+        width:130,
         fontFamily: regular,
-        fontSize: RScaler(1.8),
+        fontSize: RScaler(3),
+        textAlign:'center',
         borderWidth:1,
         borderColor:Colors.white,
-        padding:10
+        padding:10,
+        borderRadius:5
     },
     itemContainer: {
         width: width,

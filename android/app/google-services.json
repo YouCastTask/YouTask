@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "919037013922",
-    "firebase_url": "https://youcast-8a38f.firebaseio.com",
-    "project_id": "youcast-8a38f",
-    "storage_bucket": "youcast-8a38f.appspot.com"
+    "project_number": "492086195605",
+    "firebase_url": "https://youcast-b1423.firebaseio.com",
+    "project_id": "youcast-b1423",
+    "storage_bucket": "youcast-b1423.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:919037013922:android:6a698d9562bab1114c4cfb",
+        "mobilesdk_app_id": "1:492086195605:android:c03f029719a1627234f29c",
         "android_client_info": {
           "package_name": "com.ae.youcast"
         }
       },
       "oauth_client": [
         {
-          "client_id": "919037013922-j5tui4q2cufsbq6i4sv4d8khsgte29e6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.ae.youcast",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "919037013922-innj8nr8smftu2jdnhtccrqb4uk6riqv.apps.googleusercontent.com",
+          "client_id": "492086195605-spmpjjj68n75r73iivdjb5rm6sfqpq1a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCaFU9MLajjK-PGycpb9sHlwJmhp2yok9g"
+          "current_key": "AIzaSyAn9EbKNuB6VWVbikf5Mg5UpqJw89DKRVA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "919037013922-innj8nr8smftu2jdnhtccrqb4uk6riqv.apps.googleusercontent.com",
+              "client_id": "492086195605-spmpjjj68n75r73iivdjb5rm6sfqpq1a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

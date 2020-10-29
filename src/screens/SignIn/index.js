@@ -80,7 +80,6 @@ class SignIn extends Component {
                         onPress={() => signIn(username, password, navigation)}
                         disabled={disable}
                     />
-
                     <Text style={createAccountText}>{strings.DontHaveAccount} <Text style={createAccountBtn} onPress={() => navigation.navigate('SignUp')}>{strings.SignUp}</Text></Text>
                 </ImageBackground>
             </SafeAreaView>

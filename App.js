@@ -9,6 +9,7 @@ import NetInfo from "@react-native-community/netinfo";
 import NotificationPopup from 'react-native-push-notification-popup';
 import { Colors } from './app.json';
 import {strings} from './src/translations/translation'
+import {configurePush} from './src/utils/PushNotificationService'
 
 const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleWare(reducers);
@@ -27,6 +28,7 @@ class App extends Component {
     NetInfo.addEventListener(state => {
       this.setState({ connected: state.isInternetReachable });
     });
+    configurePush()
   }
 
   render() {

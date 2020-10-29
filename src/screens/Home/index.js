@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SafeAreaView,StyleSheet, Text, StatusBar, View, Image, Dimensions, Platform, ActivityIndicator ,Modal,TouchableHighlight,TouchableOpacity} from 'react-native';
+import { SafeAreaView,StyleSheet, Text, StatusBar, View, Image, Dimensions, ScrollView, Platform, ActivityIndicator ,Modal,TouchableHighlight,TouchableOpacity} from 'react-native';
 import { ClickableView, Toolbar, ListView, Button } from './../../components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { DrawerActions } from 'react-navigation-drawer';
@@ -17,9 +17,12 @@ import { Avatar } from 'react-native-paper';
 
 const styles = StyleSheet.create({
     centeredView: {
-      flex: 1,
+  
       marginTop:100,
-      borderWidth:9
+      borderWidth:9,
+      borderColor:'red',
+      zIndex:1
+
     },
     modalView: {
       backgroundColor: Colors.gray,
@@ -275,7 +278,10 @@ class Home extends Component {
           visible={this.state.modalVisible}
           transparent={true}
         >
-          <View style={styles.centeredView}>
+          <TouchableOpacity style={styles.centeredView}
+          onPressOut={() => {this.setModalVisible(false)}}
+          >
+              <ScrollView>
             <View style={styles.modalView}>
             <Text style={styles.SelectText}>{"Select a Channel"}</Text>
             {!loading ?
@@ -303,7 +309,8 @@ class Home extends Component {
                      : null}
               
             </View>
-          </View>
+            </ScrollView>
+          </TouchableOpacity>
         </Modal>
             
             </SafeAreaView>

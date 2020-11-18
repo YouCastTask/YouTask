@@ -10,9 +10,14 @@ import NotificationPopup from 'react-native-push-notification-popup';
 import { Colors } from './app.json';
 import {strings} from './src/translations/translation'
 import {configurePush} from './src/utils/PushNotificationService'
+import logger from 'redux-logger'
 
-const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
-const store = createStoreWithMiddleWare(reducers);
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk, logger)
+)
+
+
 
 class App extends Component {
 

@@ -117,8 +117,8 @@ class Info extends Component {
 
                 {global.type == "Premium" ? <Text style={upperText}> {strings.ThankYouForChoosing}<Text style={{ color: Colors.orange }}>YOUCAST Premium,</Text> {strings.YouAreFeatured}</Text> : null}
                 {global.type == "Premium" ? <Text style={upperText}>{strings.itsTime}</Text> : null}
-
-                {(global.type != "Premium" && global.type!="Special")?
+                
+                {(global.type != "Premium" && global.type!="Special" && global.type!="Basic" && global.type!=undefined)?
                         packages.map((item, index) => {
                             const { type, price, period } = item;
                             const lastIndex = index >= packages.length - 1;
@@ -143,7 +143,6 @@ class Info extends Component {
                         })
                         : null}
                 </ScrollView>}
-
                 <Modal
                     visible={this.state.visible}
                     packages={details}

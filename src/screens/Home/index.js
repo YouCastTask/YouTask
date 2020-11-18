@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   
       marginTop:100,
       borderWidth:9,
-      borderColor:'red',
       zIndex:1
 
     },
@@ -278,8 +277,7 @@ class Home extends Component {
           visible={this.state.modalVisible}
           transparent={true}
         >
-          <TouchableOpacity style={styles.centeredView}
-          onPressOut={() => {this.setModalVisible(false)}}
+          <View style={styles.centeredView}
           >
               <ScrollView>
             <View style={styles.modalView}>
@@ -310,7 +308,7 @@ class Home extends Component {
               
             </View>
             </ScrollView>
-          </TouchableOpacity>
+          </View>
         </Modal>
             
             </SafeAreaView>

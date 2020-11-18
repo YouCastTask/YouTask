@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import _ from 'underscore';
 import firestore from '@react-native-firebase/firestore';
 import { strings } from '../../translations/translation';
+import { cond } from 'react-native-reanimated';
 
 export const fetchPackages = () => {
     return async (dispatch) => {
@@ -49,6 +50,7 @@ const setUserInfo = () => {
 }
 
 export const subscripe = (id) => {
+    console.log("idddddddddddddd-------",id)
     return async (dispatch) => {
         dispatch({ type: INFO_SUBSCRIBE_LOADING });
         const { token } = JSON.parse(await AsyncStorage.getItem('tokens'));
@@ -58,6 +60,7 @@ export const subscripe = (id) => {
             success: () => {
                 dispatch({ type: INFO_SUBSCRIBE_STOP_LOADING });
                 DeviceEventEmitter.emit("CloseModal");
+                console.log("we are in successssssssssss")
                 // !!__Firebase workround__!!
                 firestore().collection(`_${user.id}`).doc().set({
                     body: strings.requestSent
